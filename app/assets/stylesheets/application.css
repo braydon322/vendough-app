@@ -21,8 +21,10 @@
    font-family: 'Anton', sans-serif;
  }
 
-#test {
-  padding-left: 20px;
+#main, .center {
+  margin: auto;
+  width: 60%;
+  padding: 10px;
 }
 
 
@@ -31,7 +33,6 @@
 }
 
  .list-group {
-   padding-left: 30px;
    max-width: 500px;
  }
 
