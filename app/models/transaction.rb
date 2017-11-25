@@ -1,6 +1,10 @@
 class Transaction < ApplicationRecord
   # before_save :pay_transaction, if: :status == "sending"
 
+  def self.newest_first
+    order('id DESC')
+  end
+
   def sender_name
     User.find_by(id: self.sender_id).name
   end

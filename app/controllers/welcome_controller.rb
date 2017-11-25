@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
 
 
   def home
-    @transactions = Transaction.all
+    @transactions = Transaction.newest_first
   end
 
   def signed_in?
