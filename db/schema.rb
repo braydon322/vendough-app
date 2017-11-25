@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124023640) do
+ActiveRecord::Schema.define(version: 20171125065604) do
 
   create_table "transactions", force: :cascade do |t|
     t.decimal "amount", precision: 7, scale: 2
     t.string "description"
-    t.integer "disburser_id"
-    t.integer "collector_id"
+    t.integer "sender_id"
+    t.integer "recipient_id"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
