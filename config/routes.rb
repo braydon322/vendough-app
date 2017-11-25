@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#home'
   resources :friends, only: [:index, :show]
+  post 'ask', to: 'transactions#ask', as: 'ask'
+  post 'pay', to: 'transactions#pay', as: 'pay'
 end

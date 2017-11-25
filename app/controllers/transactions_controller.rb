@@ -10,6 +10,14 @@ class TransactionsController < ApplicationController
   def create
   end
 
+  def pay
+    binding.pry
+  end
+
+  def ask
+    binding.pry
+  end
+
   def show
   end
 

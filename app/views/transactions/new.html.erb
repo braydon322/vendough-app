@@ -1,9 +1,24 @@
-<div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-  <span class="caret"></span></button>
-  <ul class="dropdown-menu">
-    <li><a href="#">HTML</a></li>
-    <li><a href="#">CSS</a></li>
-    <li><a href="#">JavaScript</a></li>
-  </ul>
-</div>
+<h4>Pay or Request</h4>
+
+<%= form_for @transaction do |f| %>
+  <div class="field" >
+    <%= f.label :collector_id, "Select Friend" %> <br>
+    <%= f.collection_select :collector_id, User.friends(current_user), :id, :name %>
+  </div>
+
+  <div class="field" >
+    <%= f.label :amount %> <br>
+    <%= f.number_field :amount, value: number_to_currency(f.object.amount.to_f, delimiter: '', unit: ''), step: 0.01 %>
+  </div>
+
+  <div class="field" >
+    <%= f.label :description, "What is it for?" %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class= "actions">
+    <%= f.submit "Request", formaction: ask_path, class: "btn btn-md btn-primary" %>
+    <%= f.submit "Pay", formaction: pay_path, class: "btn btn-md btn-primary" %>
+  </div>
+
+<% end %>
