@@ -16,10 +16,10 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <!-- main nav links -->
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/transactions">Feed</a></li>
-          <li><a href="/friends">Friends</a></li>
-          <li><a href="/transactions">My Transactions</a></li>
-          <li><a href="/transactions/new">Make Transaction</a></li>
+          <li class="active"><%= link_to "Feed", root_path %></li>
+          <li><%= link_to "Friends", friends_path %></li>
+          <li><%= link_to "My Transactions", transactions_path %></li>
+          <li><%= link_to "Make Transaction", new_transaction_path %></li>
         </ul>
         <!-- social bar nav links -->
         <ul class="nav navbar-nav navbar-right">
