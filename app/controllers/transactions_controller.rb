@@ -26,6 +26,9 @@ class TransactionsController < ApplicationController
   def show
   end
 
+  def incomplete
+  end
+
   private
 
   # def set_attraction

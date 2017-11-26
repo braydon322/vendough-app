@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/transactions/incomplete', to: 'transactions#incomplete', as: 'incomplete'
+  # ^^ must be above transaction resource otherwise thinks it's a show 
   resources :transactions
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", :omniauth_callbacks => "users/omniauth_callbacks"}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
