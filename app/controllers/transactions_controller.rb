@@ -20,7 +20,13 @@ class TransactionsController < ApplicationController
   end
 
   def ask
-    binding.pry
+    # binding.pry
+    @transaction = Transaction.new(transaction_params)
+    @transaction.status = "incomplete"
+    @transaction.save
+    recipient = User.find_by(id: @transaction.recipient_id)
+    flash[:message] = "Your request to #{recipient.name} has been sent."
+    redirect_to root_path
   end
 
   def show
