@@ -5,6 +5,10 @@ class Transaction < ApplicationRecord
     order('id DESC')
   end
 
+  def self.incomplete(current_user)
+    where(status: "incomplete", sender_id: current_user.id)
+  end
+
   def sender_name
     User.find_by(id: self.sender_id).name
   end

@@ -33,6 +33,7 @@ class TransactionsController < ApplicationController
   end
 
   def incomplete
+    @transactions = Transaction.incomplete(current_user)
   end
 
   private
