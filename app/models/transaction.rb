@@ -21,6 +21,10 @@ class Transaction < ApplicationRecord
     (self.created_at - 25200).strftime("%b %d")
   end
 
+  def exact_date
+    (self.created_at - 25200).strftime("%b %d, %Y %I:%M %p")
+  end
+
   def pay_transaction
     sender = User.find_by(id: self.sender_id)
     recipient = User.find_by(id: self.recipient_id)

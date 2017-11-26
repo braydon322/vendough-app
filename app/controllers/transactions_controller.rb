@@ -36,6 +36,13 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.incomplete(current_user)
   end
 
+  def destroy
+    @transaction = Transaction.find_by(id: params[:id])
+    @transaction.destroy
+    flash[:message] = "Your request has been cancelled."
+    redirect_to root_path
+  end
+
   private
 
   # def set_attraction
