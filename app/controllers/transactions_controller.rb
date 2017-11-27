@@ -13,7 +13,6 @@ class TransactionsController < ApplicationController
 
   def pay
     @transaction = Transaction.new(transaction_params)
-    @transaction.status = "sending"
     @transaction.pay_transaction
     @transaction.save
     redirect_to root_path
@@ -24,20 +23,27 @@ class TransactionsController < ApplicationController
     @transaction = Transaction.new(transaction_params)
     @transaction.status = "incomplete"
     @transaction.save
-    recipient = User.find_by(id: @transaction.recipient_id)
-    flash[:message] = "Your request to #{recipient.name} has been sent."
+    flash[:message] = "Your request to #{@transaction.recipient.name} has been sent."
     redirect_to root_path
+  end
+
+  def requests
+    @requests = current_user.requests_for_money_from_others
+  end
+
+  def approve
+
   end
 
   def show
   end
 
   def incomplete
-    @transactions = Transaction.incomplete(current_user)
+    @transactions = current_user.requests_awaiting_approval_by_others
   end
 
   def destroy
-    @transaction = Transaction.find_by(id: params[:id])
+    @transaction = current_user.transactions.find_by(id: params[:id])
     @transaction.destroy
     flash[:message] = "Your request has been cancelled."
     redirect_to root_path

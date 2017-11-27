@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :transactions, foreign_key: "sender_id"
+  has_many :recipients, through: :transactions
+  has_many :inverse_transactions, :class_name => "Transaction", :foreign_key => "recipient_id"
+  has_many :inverse_recipients, :through => :inverse_transactions, :source => :user
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,5 +18,21 @@ class User < ApplicationRecord
 
   def self.friends(current_user)
     where.not("id = ?", current_user.id)
+  end
+
+  def requests_awaiting_approval_by_others
+    # SELECT  "transactions".*
+    # FROM "transactions"
+    # WHERE "transactions"."sender_id" = self.id
+    # AND "transactions"."status" = "incomplete"
+    transactions.where(status: "incomplete")
+  end
+
+  def requests_for_money_from_others
+    # SELECT  "transactions".*
+    # FROM "transactions"
+    # WHERE "transactions"."recipient_id" = self.id
+    # AND "transactions"."status" = "incomplete"
+    inverse_transactions.where(status: "incomplete")
   end
 end

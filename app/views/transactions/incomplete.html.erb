@@ -1,4 +1,4 @@
-<% if Transaction.incomplete(current_user).empty? %>
+<% if current_user.requests_awaiting_approval_by_others.empty? %>
   <div style="text-align: center" >
     <h4>Requests from you</h4>
     <h5>See your requests for money here <br> while they're awaiting approval.</h5>

@@ -21,6 +21,7 @@
           <li class="<%= active?(transactions_path) %>"><%= link_to "My Transactions", transactions_path %></li>
           <li class="<%= active?(new_transaction_path) %>"><%= link_to "Make Transaction", new_transaction_path %></li>
           <li class="<%= active?(incomplete_path) %>"><a href="/transactions/incomplete">Incomplete <span class="badge"><%=incomplete_count%></span></a></li>
+          <li class="<%= active?(pay_requests_path) %>"><a href="/transactions/requests">Requests <span class="badge"><%=requests_count%></span></a></li>
         </ul>
         <!-- social bar nav links -->
         <ul class="nav navbar-nav navbar-right">

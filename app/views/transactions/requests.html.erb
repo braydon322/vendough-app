@@ -1,0 +1,28 @@
+<% if current_user.requests_for_money_from_others.empty? %>
+  <div style="text-align: center" >
+    <h4>Requests to you</h4>
+    <h5>Accept/decline requests for money from others here.</h5>
+  </div>
+<% end %>
+
+<div class="list-group">
+  <%@requests.each do |request|%>
+  <div class="list-group-item">
+    <p><b> <%= request.sender_name %> requests $<%=request.amount %></b></p>
+    <div style="position: absolute; top: 10px; right: 10px; width: 150px; text-align:right;">
+      <%= request.exact_date %>
+    </div>
+    <p> <%= request.description %></p><br>
+    <div class= "actions" style="position: absolute; bottom: 5px; right: 100px;">
+      <%= form_for request, method: :delete do |f| %>
+        <%= f.submit "Decline", class: "btn btn-sm btn-default", onclick: "return confirm('Decline the request?');"  %>
+      <% end %>
+    </div>
+    <div class= "actions" style="position: absolute; bottom: 5px; right: 10px;">
+      <%= form_for request do |f| %>
+        <%= f.submit "Pay", formaction: approve_path, class: "btn btn-sm btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <%end%>
+</div> <!--list-group -->

@@ -1,20 +1,19 @@
 class Transaction < ApplicationRecord
+  alias_attribute :user, :sender
+  belongs_to :sender, :class_name => "User"
+  belongs_to :recipient, :class_name => "User"
   # before_save :pay_transaction, if: :status == "sending"
 
   def self.newest_first
-    order('id DESC')
-  end
-
-  def self.incomplete(current_user)
-    where(status: "incomplete", sender_id: current_user.id)
+    where(status: "complete").order('id DESC')
   end
 
   def sender_name
-    User.find_by(id: self.sender_id).name
+    sender.name
   end
 
   def recipient_name
-    User.find_by(id: self.recipient_id).name
+    recipient.name
   end
 
   def concise_date
@@ -26,11 +25,17 @@ class Transaction < ApplicationRecord
   end
 
   def pay_transaction
-    sender = User.find_by(id: self.sender_id)
-    recipient = User.find_by(id: self.recipient_id)
-    sender.credit -= self.amount
-    recipient.credit += self.amount
-    self.status = "Complete"
+    sender.credit -= amount
+    recipient.credit += amount
+    status = "complete"
+    sender.save
+    recipient.save
+  end
+
+  def approve_transaction
+    sender.credit += amount
+    recipient.credit -= amount
+    status = "complete"
     sender.save
     recipient.save
   end
