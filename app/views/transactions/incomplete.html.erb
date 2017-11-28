@@ -13,7 +13,7 @@
       <%= transaction.exact_date %>
     </div>
     <div style="position: absolute; bottom: 40px; right: 10px; width: 150px; text-align:right;">
-      <%= "$#{transaction.amount}" %>
+      <%= number_to_currency(transaction.amount) %>
     </div>
     <p> <%= transaction.description %></p><br>
     <div class= "actions" style="position: absolute; bottom: 5px; right: 10px;">

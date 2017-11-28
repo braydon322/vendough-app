@@ -2,7 +2,8 @@
   <p style="color:green;"> <%= flash[:message] %> </p>
 <% end %>
 
-<h4><%=@user.name unless own_page? %></h4>
+<h4><%= @user.name %></h4>
+<h5><%="#{display_credit} in Vendough" if own_page?%></h5>
 
 <div class="list-group">
   <%@transactions.each do |transaction|%>

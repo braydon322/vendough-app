@@ -33,4 +33,7 @@ module ApplicationHelper
     end
   end
 
+  def current_user_involved?(transaction)
+    transaction.sender == current_user || transaction.recipient == current_user
+  end
 end

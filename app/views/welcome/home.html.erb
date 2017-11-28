@@ -2,8 +2,7 @@
   <p style="color:green;"> <%= flash[:message] %> </p>
 <% end %>
 
-<h4><%=current_user.name %></h4>
-<h5>$<%=display_credit%> in Vendough</h5>
+<h4> Main Feed </h4>
 
 <div class="list-group">
   <%@transactions.each do |transaction|%>
@@ -12,6 +11,11 @@
     <div style="position: absolute; top: 5px; right: 10px; width: 90px; text-align:right;">
       <%= transaction.concise_date %> <span class="glyphicon glyphicon-globe"></span>
     </div>
+    <% if current_user_involved?(transaction) %>
+      <%= content_tag :div, style: format_with_color(transaction) do  %>
+        <%= plus_or_minus(transaction) %><%= number_to_currency(transaction.amount) %>
+      <% end %>
+    <% end %>
     <p> <%= transaction.description %></p>
   </a>
   <%end%>
