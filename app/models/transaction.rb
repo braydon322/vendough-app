@@ -44,6 +44,10 @@ class Transaction < ApplicationRecord
     sender.credit -= amount
     recipient.credit += amount
     self.status = "complete"
+    self.amount *= -1
+    #this way you can tell from reading the db who paid who.
+    # i.e. if the amount is negative, the request sender, sent money.
+    # i.e. if the amount is positive, the request sender, is gaining money. 
     sender.save
     recipient.save
   end

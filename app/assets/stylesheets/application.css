@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+ .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+     background-color: rgb(061,149,206) !important;
+ }
+
  .page-header h2 {
    margin-top: 0;
    text-align: center;
@@ -23,7 +27,7 @@
 
 #main, .center {
   margin: auto;
-  width: 60%;
+  width: 80%;
   padding: 10px;
 }
 
@@ -36,9 +40,9 @@
    max-width: 400px;
  }
 
- .page-header {
-   background-color: white;
-   margin-top: 0;
+ .page-header, #login {
+   background-color: rgb(061,149,206);
+   margin-top: 0
  }
 
  .form-signin {
