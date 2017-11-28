@@ -2,7 +2,9 @@
   <p style="color:green;"> <%= flash[:message] %> </p>
 <% end %>
 
-<h4><%=@user.name %></h4>
+<%# if !own_page? %>
+  <h4><%=@user.name unless own_page? %></h4>
+<%# end %>
 
 <div class="list-group">
   <%@transactions.each do |transaction|%>
@@ -10,6 +12,9 @@
     <p><b><%= transaction.sender_name %></b> paid <b><%= transaction.recipient_name %></b></p>
     <div style="position: absolute; top: 5px; right: 10px; width: 90px; text-align:right;">
       <%= transaction.concise_date %> <span class="glyphicon glyphicon-globe"></span>
+    </div>
+    <div style="position: absolute; bottom: 20px; right: 10px; width: 150px; text-align:right;">
+      <%= number_to_currency(transaction.amount) if own_page? %>
     </div>
     <p> <%= transaction.description %></p>
   </a>

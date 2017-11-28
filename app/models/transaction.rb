@@ -43,4 +43,5 @@ class Transaction < ApplicationRecord
 
 
 
+
 end
