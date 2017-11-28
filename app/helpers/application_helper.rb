@@ -19,17 +19,17 @@ module ApplicationHelper
 
   def format_with_color(transaction)
     if transaction.sender == current_user
-      "color: red; position: absolute; bottom: 20px; right: 10px; width: 150px; text-align:right;"
-    else
       "color: green; position: absolute; bottom: 20px; right: 10px; width: 150px; text-align:right;"
+    else
+      "color: red; position: absolute; bottom: 20px; right: 10px; width: 150px; text-align:right;"
     end
   end
 
   def plus_or_minus(transaction)
     if transaction.sender == current_user
-      "- "
-    else
       "+ "
+    else
+      "- "
     end
   end
 

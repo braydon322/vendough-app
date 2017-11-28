@@ -16,6 +16,22 @@ class Transaction < ApplicationRecord
     recipient.name
   end
 
+  def loser_name
+    if self.amount > 0
+      self.recipient.name
+    else
+      self.sender.name
+    end
+  end
+
+  def gainer_name
+    if self.amount > 0
+      self.sender.name
+    else
+      self.recipient.name
+    end
+  end
+
   def concise_date
     (self.created_at - 25200).strftime("%b %d")
   end
