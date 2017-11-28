@@ -1,22 +1,25 @@
-<% if flash[:message] %>
-  <p style="color:green;"> <%= flash[:message] %> </p>
-<% end %>
 
 
-<center>
-<h4> Main Feed </h4>
+<div class="container" id="feed">
+  <center>
+    <h4> Main Feed </h4>
+      <% if flash[:message] %>
+        <p style="color:green;"> <%= flash[:message] %> </p>
+      <% end %>
 
-<% if @transactions.empty? %>
-  <p><b>Once you and/or your contacts complete transactions <br>
-    they will show up here</b></p>
-<% end %>
-</center>
+      <% if @transactions.empty? %>
+        <p><b>Once you and/or your contacts complete transactions <br>
+        they will show up here</b></p>
+      <% end %>
+  </center>
 
-<div class ="center">
+
+
 <%= content_tag :div, class: "list-group" do %>
   <%= render partial: 'welcome/transaction_details', collection: @transactions, as: :transaction%>
 <% end %>
-</div>
+
+
 
 
 

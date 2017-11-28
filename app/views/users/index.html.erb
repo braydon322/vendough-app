@@ -1,10 +1,14 @@
-<h4> Contacts </h4>
 
-<%= content_tag :div, class: "list-group" do %>
-  <% @contacts.each do |contact| %>
-    <a href="/users/<%= contact.id %>" class="list-group-item">
-      <h5><%= contact.name %></h5>
-      <%= content_tag :p, contact.email, style: "color: rgb(97,148,203)" %>
-    </a>
+<div class="container" id="feed">
+  <center>
+    <h4> Contacts </h4>
+  </center>
+  <%= content_tag :div, class: "list-group" do %>
+    <% @contacts.each do |contact| %>
+      <a href="/users/<%= contact.id %>" class="list-group-item">
+        <h5><%= contact.name %></h5>
+        <%= content_tag :p, contact.email, style: "color: rgb(97,148,203)" %>
+      </a>
+    <% end %>
   <% end %>
-<% end %>
+</div>

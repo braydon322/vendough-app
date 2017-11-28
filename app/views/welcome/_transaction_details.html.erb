@@ -5,7 +5,7 @@
   </div>
   <% if current_user_involved?(transaction) %>
     <%= content_tag :div, style: format_with_color(transaction) do  %>
-      <%= plus_or_minus(transaction) %><%= number_to_currency(transaction.amount.abs) %>
+      <b><%= plus_or_minus(transaction) %><%= number_to_currency(transaction.amount.abs) %></b>
     <% end %>
   <% end %>
   <p> <%= transaction.description %></p>
