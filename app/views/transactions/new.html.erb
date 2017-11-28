@@ -1,25 +1,27 @@
-<h4>Pay or Request</h4>
 
-<%= form_for @transaction do |f| %>
-  <div class="field" >
-    <%= f.hidden_field :sender_id, :value => current_user.id %>
-    <%= f.label :recipient_id, "Select Friend" %> <br>
-    <%= f.collection_select :recipient_id, User.contacts(current_user), :id, :name %>
-  </div>
+<div class="container" id="feed">
+  <h4>Pay or Request</h4>
+  <%= form_for @transaction do |f| %>
+    <div class="field" >
+      <%= f.hidden_field :sender_id, :value => current_user.id %>
+      <%= f.label :recipient_id, "Select Friend" %> <br>
+      <%= f.collection_select :recipient_id, User.contacts(current_user), :id, :name %>
+    </div>
 
-  <div class="field" >
-    <%= f.label :amount %> <br>
-    <%= f.number_field :amount, value: number_to_currency(f.object.amount.to_f, delimiter: '', unit: ''), step: 0.01 %>
-  </div>
+    <div class="field" >
+      <%= f.label :amount %> <br>
+      <%= f.number_field :amount, value: number_to_currency(f.object.amount.to_f, delimiter: '', unit: ''), step: 0.01 %>
+    </div>
 
-  <div class="field" >
-    <%= f.label :description, "What is it for?" %><br>
-    <%= f.text_area :description %>
-  </div>
+    <div class="field" >
+      <%= f.label :description, "What is it for?" %><br>
+      <%= f.text_area :description %>
+    </div>
 
-  <div class= "actions">
-    <%= f.submit "Request", formaction: ask_path, class: "btn btn-md btn-primary" %>
-    <%= f.submit "Pay", formaction: pay_path, class: "btn btn-md btn-primary" %>
-  </div>
+    <div class= "actions">
+      <%= f.submit "Request", formaction: ask_path, class: "btn btn-md btn-primary" %>
+      <%= f.submit "Pay", formaction: pay_path, class: "btn btn-md btn-primary" %>
+    </div>
 
-<% end %>
+  <% end %>
+</div>
