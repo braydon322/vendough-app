@@ -5,19 +5,6 @@
 <h4><%= @user.name %></h4>
 <h5><%="#{display_credit} in Vendough" if own_page?%></h5>
 
-<div class="list-group">
-  <%@transactions.each do |transaction|%>
-  <a href="/transactions/<%= transaction.id %>" class="list-group-item">
-    <p><b><%= transaction.sender_name %></b> paid <b><%= transaction.recipient_name %></b></p>
-    <div style="position: absolute; top: 5px; right: 10px; width: 90px; text-align:right;">
-      <%= transaction.concise_date %> <span class="glyphicon glyphicon-globe"></span>
-    </div>
-    <% if own_page? %>
-      <%= content_tag :div, style: format_with_color(transaction) do  %>
-        <%= plus_or_minus(transaction) %><%= number_to_currency(transaction.amount) %>
-      <% end %>
-    <% end %>
-    <p> <%= transaction.description %></p>
-  </a>
-  <%end%>
-</div> <!--list-group -->
+<%= content_tag :div, class: "list-group" do %>
+  <%= render partial: '/welcome/transaction_details', collection: @transactions, as: :transaction%>
+<% end %>
