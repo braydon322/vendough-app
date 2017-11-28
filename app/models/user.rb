@@ -16,7 +16,7 @@ class User < ApplicationRecord
    end
   end
 
-  def self.friends(current_user)
+  def self.contacts(current_user)
     where.not("id = ?", current_user.id)
   end
 

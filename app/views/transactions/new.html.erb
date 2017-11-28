@@ -4,7 +4,7 @@
   <div class="field" >
     <%= f.hidden_field :sender_id, :value => current_user.id %>
     <%= f.label :recipient_id, "Select Friend" %> <br>
-    <%= f.collection_select :recipient_id, User.friends(current_user), :id, :name %>
+    <%= f.collection_select :recipient_id, User.contacts(current_user), :id, :name %>
   </div>
 
   <div class="field" >

@@ -17,7 +17,7 @@
         <!-- main nav links -->
         <ul class="nav navbar-nav">
           <!-- <li class="active"><%#= link_to "Feed", root_path %></li> -->
-          <li class="<%= active?(friends_path) %>"><%= link_to "Friends", friends_path %></li>
+          <li class="<%= active?(friends_path) %>"><%= link_to "Contacts", contacts_path %></li>
           <li class="<%= active?(user_path(current_user)) %>"><%= link_to "My Transactions", user_path(current_user) %></li>
           <li class="<%= active?(new_transaction_path) %>"><%= link_to "Make Transaction", new_transaction_path %></li>
           <li class="<%= active?(incomplete_path) %>"><a href="/transactions/incomplete">Incomplete <span class="badge"><%=incomplete_count%></span></a></li>

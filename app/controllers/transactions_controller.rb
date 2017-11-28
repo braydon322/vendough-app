@@ -36,7 +36,7 @@ class TransactionsController < ApplicationController
     @transaction = current_user.requests_for_money_from_others.find_by(id: params[:transaction][:id])
     @transaction.approve_transaction
     @transaction.save
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 
   def show
@@ -47,6 +47,7 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
+    binding.pry
     @transaction = current_user.transactions.find_by(id: params[:id])
     @transaction.destroy
     flash[:message] = "Your request has been cancelled."
