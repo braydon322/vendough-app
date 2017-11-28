@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def format_with_color(transaction)
-    if transaction.sender == current_user
+    if transaction.sender == current_user && transaction.amount > 0 || transaction.recipient == current_user && transaction.amount < 0
       "color: green; position: absolute; bottom: 20px; right: 10px; width: 150px; text-align:right;"
     else
       "color: red; position: absolute; bottom: 20px; right: 10px; width: 150px; text-align:right;"
@@ -26,7 +26,7 @@ module ApplicationHelper
   end
 
   def plus_or_minus(transaction)
-    if transaction.sender == current_user
+    if transaction.sender == current_user && transaction.amount > 0 || transaction.recipient == current_user && transaction.amount < 0
       "+ "
     else
       "- "

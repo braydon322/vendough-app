@@ -14,6 +14,8 @@ class TransactionsController < ApplicationController
   def pay
     @transaction = Transaction.new(transaction_params)
     @transaction.pay_transaction
+    # binding.pry
+    @transaction.amount *= -1
     @transaction.save
     redirect_to root_path
   end
