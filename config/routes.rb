@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   post 'ask', to: 'transactions#ask', as: 'ask'
   post 'pay', to: 'transactions#pay', as: 'pay'
   post 'approve', to: 'transactions#approve', as: 'approve'
+  # patch '/transactions/:id', to: 'transactions#update', as: 'approve_transaction'
 end

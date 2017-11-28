@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125065604) do
+ActiveRecord::Schema.define(version: 20171128191217) do
 
   create_table "transactions", force: :cascade do |t|
     t.decimal "amount", precision: 7, scale: 2
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171125065604) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "action"
   end
 
   create_table "users", force: :cascade do |t|

@@ -19,9 +19,10 @@
       <% end %>
     </div>
     <div class= "actions" style="position: absolute; bottom: 5px; right: 10px;">
-      <%= form_for request, method: :post do |f| %>
+      <%= form_for request do |f| %>
         <%= f.hidden_field :id %>
-        <%= f.submit "Pay", formaction: approve_path, class: "btn btn-sm btn-primary" %>
+        <%= f.submit "Pay", class: "btn btn-sm btn-primary" %>
+        <%# f.submit "Pay", formaction: approve_path, class: "btn btn-sm btn-primary" %>
       <% end %>
     </div>
   </div>

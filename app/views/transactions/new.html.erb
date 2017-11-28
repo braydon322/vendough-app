@@ -18,10 +18,16 @@
       <%= f.text_area :description %>
     </div>
 
-    <div class= "actions">
-      <%= f.submit "Request", formaction: ask_path, class: "btn btn-md btn-primary" %>
-      <%= f.submit "Pay", formaction: pay_path, class: "btn btn-md btn-primary" %>
+    <div class= "field">
+      <%= f.radio_button :action, 'request'%>
+      <%= label :action_request, 'Request' %>
+      <%= f.radio_button :action, 'pay' %>
+      <%= label :action_pay, 'Pay' %>
+      <%#= f.submit "Request", formaction: ask_path, class: "btn btn-md btn-primary" %>
     </div>
 
+    <div class= "action">
+      <%= f.submit "Submit", class: "btn btn-md btn-primary" %>
+    </div>
   <% end %>
 </div>
