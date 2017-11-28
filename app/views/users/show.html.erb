@@ -3,7 +3,7 @@
 <% end %>
 
 <h4><%= @user.name %></h4>
-<h5><%="#{display_credit} in Vendough" if own_page?%></h5>
+<h5><%="#{number_to_currency(display_credit)} in Vendough" if own_page?%></h5>
 
 <%= content_tag :div, class: "list-group" do %>
   <%= render partial: '/welcome/transaction_details', collection: @transactions, as: :transaction%>
