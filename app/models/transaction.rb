@@ -27,15 +27,16 @@ class Transaction < ApplicationRecord
   def pay_transaction
     sender.credit -= amount
     recipient.credit += amount
-    status = "complete"
+    self.status = "complete"
     sender.save
     recipient.save
   end
 
   def approve_transaction
+    # binding.pry
     sender.credit += amount
     recipient.credit -= amount
-    status = "complete"
+    self.status = "complete"
     sender.save
     recipient.save
   end

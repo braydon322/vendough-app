@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # ^^ must be above transaction resource otherwise thinks it's a show
   resources :transactions
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", :omniauth_callbacks => "users/omniauth_callbacks"}
+  resources :users, only: [:show]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'welcome#home'
   resources :friends, only: [:index, :show]

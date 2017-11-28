@@ -8,7 +8,11 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
+
     super
+    #call Transcation model method pass in current_user, his
+    ##updated_at > last_log_in
+    
   end
 
   # DELETE /resource/sign_out

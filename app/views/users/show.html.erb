@@ -1,0 +1,17 @@
+<% if flash[:message] %>
+  <p style="color:green;"> <%= flash[:message] %> </p>
+<% end %>
+
+<h4><%=@user.name %></h4>
+
+<div class="list-group">
+  <%@transactions.each do |transaction|%>
+  <a href="/transactions/<%= transaction.id %>" class="list-group-item">
+    <p><b><%= transaction.sender_name %></b> paid <b><%= transaction.recipient_name %></b></p>
+    <div style="position: absolute; top: 5px; right: 10px; width: 90px; text-align:right;">
+      <%= transaction.concise_date %> <span class="glyphicon glyphicon-globe"></span>
+    </div>
+    <p> <%= transaction.description %></p>
+  </a>
+  <%end%>
+</div> <!--list-group -->
