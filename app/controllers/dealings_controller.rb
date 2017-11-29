@@ -16,9 +16,15 @@ class DealingsController < ApplicationController
       redirect_to root_path
     elsif @dealing.action == "pay"
       @dealing.pay_dealing
-      @dealing.save
-      flash[:message] = "You have successfully sent money to #{@dealing.recipient.name}."
-      redirect_to root_path
+      if @dealing.sender.save
+        @dealing.recipient.save
+        @dealing.save
+        flash[:message] = "You have successfully sent money to #{@dealing.recipient.name}."
+        redirect_to root_path
+      else
+        flash[:message] = @dealing.sender.errors[:credit].first
+        redirect_back(fallback_location: root_path)
+      end
     end
   end
 

@@ -1,5 +1,8 @@
 
 <div class="container" id="feed">
+  <% if flash[:message] %>
+    <p style="color:red;"> <%= flash[:message] %> </p>
+  <% end %>
   <h4>Pay or Request</h4>
   <%= form_for @dealing do |f| %>
     <div class="field" >

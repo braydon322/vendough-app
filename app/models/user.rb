@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  validates_numericality_of :credit, :greater_than_or_equal_to => 0, :message => "Insufficient funds to complete transaction."
   has_many :dealings, foreign_key: "sender_id"
   has_many :recipients, through: :dealings
   has_many :inverse_dealings, :class_name => "Dealing", :foreign_key => "recipient_id"
