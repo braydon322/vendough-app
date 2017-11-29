@@ -47,9 +47,11 @@
    background-color: rgb(061,149,206);
  }
 
+/*notification badge color scheme*/
  #bs-example-navbar-collapse-1 > ul > li > a > span {
-   background-color: #cbd1db;
-   color: rgb(061,149,206);
+   background-color: red;
+   color: white;
+   text-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
  }
 
  #bs-example-navbar-collapse-1 > ul > li > a {

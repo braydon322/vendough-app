@@ -4,7 +4,7 @@
   <%= form_for @dealing do |f| %>
     <div class="field" >
       <%= f.hidden_field :sender_id, :value => current_user.id %>
-      <%= f.label :recipient_id, "Select Friend" %> <br>
+      <%= f.label :recipient_id, "Select Contact" %> <br>
       <%= f.collection_select :recipient_id, User.contacts(current_user), :id, :name %>
     </div>
 

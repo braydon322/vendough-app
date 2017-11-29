@@ -1,4 +1,4 @@
-class TransactionTag < ApplicationRecord
-  belongs_to :dealing, class_name: "Transaction"
+class DealingTag < ApplicationRecord
+  belongs_to :dealing
   belongs_to :tag
 end

@@ -2,6 +2,10 @@
 <div class="container" id="feed">
   <center>
     <h4> Contacts </h4>
+    <% if @contacts.empty? %>
+      <p><b>When other people register for Vendough <br>
+      they will show up here</b></p>
+    <% end %>
   </center>
   <%= content_tag :div, class: "list-group" do %>
     <% @contacts.each do |contact| %>

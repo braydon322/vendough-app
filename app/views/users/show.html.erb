@@ -9,10 +9,22 @@
         <%= "#{number_to_currency(display_credit)} in Vendough" %>
         <a href="#" type="button" class="btn btn-secondary btn-sm" style="display: inline;">Add to Fund</a>
       </h5>
+      <% if @dealings.empty? %>
+        <br>
+        <p><b>When you complete a transaction <br>
+        they will show up here</b></p>
+      <% end %>
     <% else %>
       <a href="/users/<%=params[:id]%>/dealings/new" type="button" class="btn btn-primary btn-sm btn-block">Pay or Request</a>
       <br>
+      <% if @dealings.empty? %>
+        <br>
+        <p><b>This contact has not made any Vendough <br>
+        transactions yet</b></p>
+      <% end %>
     <% end %>
+
+
 
   </center>
   <%= content_tag :div, class: "list-group" do %>
