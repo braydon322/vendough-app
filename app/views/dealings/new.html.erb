@@ -1,7 +1,7 @@
 
 <div class="container" id="feed">
   <h4>Pay or Request</h4>
-  <%= form_for @transaction do |f| %>
+  <%= form_for @dealing do |f| %>
     <div class="field" >
       <%= f.hidden_field :sender_id, :value => current_user.id %>
       <%= f.label :recipient_id, "Select Friend" %> <br>

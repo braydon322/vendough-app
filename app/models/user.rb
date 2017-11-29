@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  has_many :transactions, foreign_key: "sender_id"
-  has_many :recipients, through: :transactions
-  has_many :inverse_transactions, :class_name => "Transaction", :foreign_key => "recipient_id"
-  has_many :inverse_recipients, :through => :inverse_transactions, :source => :user
+  has_many :dealings, foreign_key: "sender_id"
+  has_many :recipients, through: :dealings
+  has_many :inverse_dealings, :class_name => "Dealing", :foreign_key => "recipient_id"
+  has_many :inverse_recipients, :through => :inverse_dealings, :source => :user
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -21,18 +21,18 @@ class User < ApplicationRecord
   end
 
   def requests_awaiting_approval_by_others
-    # SELECT  "transactions".*
-    # FROM "transactions"
-    # WHERE "transactions"."sender_id" = self.id
-    # AND "transactions"."status" = "incomplete"
-    transactions.where(status: "incomplete")
+    # SELECT  "dealings".*
+    # FROM "dealings"
+    # WHERE "dealings"."sender_id" = self.id
+    # AND "dealings"."status" = "incomplete"
+    dealings.where(status: "incomplete")
   end
 
   def requests_for_money_from_others
-    # SELECT  "transactions".*
-    # FROM "transactions"
-    # WHERE "transactions"."recipient_id" = self.id
-    # AND "transactions"."status" = "incomplete"
-    inverse_transactions.where(status: "incomplete")
+    # SELECT  "dealings".*
+    # FROM "dealings"
+    # WHERE "dealings"."recipient_id" = self.id
+    # AND "dealings"."status" = "incomplete"
+    inverse_dealings.where(status: "incomplete")
   end
 end

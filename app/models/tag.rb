@@ -1,4 +1,4 @@
 class Tag < ApplicationRecord
-  has_many :transaction_tags
-  has_many :dealings, through: :transaction_tags, foreign_key: "tag_id", class_name: "Transaction" 
+  has_many :dealing_tags
+  has_many :dealings, through: :dealing_tags
 end

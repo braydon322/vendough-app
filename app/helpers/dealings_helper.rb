@@ -1,0 +1,3 @@
+module DealingsHelper
+
+end

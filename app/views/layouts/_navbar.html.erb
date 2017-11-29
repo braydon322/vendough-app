@@ -19,9 +19,9 @@
           <!-- <li class="active"><%#= link_to "Feed", root_path %></li> -->
           <li class="<%= active?(user_path(current_user)) %>"><%= link_to "#{current_user.name} $#{display_credit}", user_path(current_user) %></li>
           <li class="<%= active?(contacts_path) %>"><%= link_to "Contacts", contacts_path %></li>
-          <li class="<%= active?(new_transaction_path) %>"><%= link_to "Make Transaction", new_transaction_path %></li>
-          <li class="<%= active?(incomplete_path) %>"><a href="/transactions/incomplete">Incomplete <span class="badge badge-info"><%=incomplete_count%></span></a></li>
-          <li class="<%= active?(pay_requests_path) %>"><a href="/transactions/requests">Requests <span class="badge badge-info"><%=requests_count%></span></a></li>
+          <li class="<%= active?(new_dealing_path) %>"><%= link_to "Make Dealing", new_dealing_path %></li>
+          <li class="<%= active?(incomplete_path) %>"><a href="/dealings/incomplete">Incomplete <span class="badge badge-info"><%=incomplete_count%></span></a></li>
+          <li class="<%= active?(pay_requests_path) %>"><a href="/dealings/requests">Requests <span class="badge badge-info"><%=requests_count%></span></a></li>
         </ul>
         <!-- social bar nav links -->
         <ul class="nav navbar-nav navbar-right">

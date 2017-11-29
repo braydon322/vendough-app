@@ -1,9 +1,9 @@
-class Transaction < ApplicationRecord
+class Dealing < ApplicationRecord
   alias_attribute :user, :sender
   belongs_to :sender, :class_name => "User"
   belongs_to :recipient, :class_name => "User"
-  has_many :transaction_tags
-  has_many :tags, through: :transaction_tags
+  has_many :dealing_tags
+  has_many :tags, through: :dealing_tags
 
   def self.newest_first
     where(status: "complete").order('id DESC')
@@ -58,7 +58,7 @@ class Transaction < ApplicationRecord
     (self.created_at - 25200).strftime("%b %d, %Y %I:%M %p")
   end
 
-  def pay_transaction
+  def pay_dealing
     sender.credit -= amount
     recipient.credit += amount
     self.status = "complete"
@@ -70,7 +70,7 @@ class Transaction < ApplicationRecord
     recipient.save
   end
 
-  def approve_transaction
+  def approve_dealing
     # binding.pry
     sender.credit += amount
     recipient.credit -= amount
