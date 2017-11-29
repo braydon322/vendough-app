@@ -2,7 +2,8 @@ class Transaction < ApplicationRecord
   alias_attribute :user, :sender
   belongs_to :sender, :class_name => "User"
   belongs_to :recipient, :class_name => "User"
-  # before_save :pay_transaction, if: :status == "sending"
+  has_many :transaction_tags
+  has_many :tags, through: :transaction_tags
 
   def self.newest_first
     where(status: "complete").order('id DESC')

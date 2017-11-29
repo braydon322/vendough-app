@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128191217) do
+ActiveRecord::Schema.define(version: 20171129070901) do
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transaction_tags", force: :cascade do |t|
+    t.integer "transaction_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_transaction_tags_on_tag_id"
+    t.index ["transaction_id"], name: "index_transaction_tags_on_transaction_id"
+  end
 
   create_table "transactions", force: :cascade do |t|
     t.decimal "amount", precision: 7, scale: 2
