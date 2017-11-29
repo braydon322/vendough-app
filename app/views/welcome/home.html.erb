@@ -15,9 +15,11 @@
 
 
 
-<%= content_tag :div, class: "list-group" do %>
-  <%= render partial: 'welcome/transaction_details', collection: @transactions, as: :transaction%>
-<% end %>
+  <%= content_tag :div, class: "list-group" do %>
+    <%= render partial: 'welcome/transaction_details', collection: @transactions, as: :transaction%>
+  <% end %>
+
+</div>
 
 
 

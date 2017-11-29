@@ -4,7 +4,16 @@
 <div class="container" id="feed">
   <center>
     <h4><%= @user.name %></h4>
-    <h5><%="#{number_to_currency(display_credit)} in Vendough" if own_page?%></h5>
+    <% if own_page? %>
+      <h5>
+        <%= "#{number_to_currency(display_credit)} in Vendough" %>
+        <a href="#" type="button" class="btn btn-secondary btn-sm" style="display: inline;">Add to Fund</a>
+      </h5>
+    <% else %>
+      <a href="/users/<%=params[:id]%>/transactions/new" type="button" class="btn btn-primary btn-sm btn-block">Pay or Request</a>
+      <br>
+    <% end %>
+
   </center>
   <%= content_tag :div, class: "list-group" do %>
     <%= render partial: '/welcome/transaction_details', collection: @transactions, as: :transaction%>

@@ -5,26 +5,27 @@
   </div>
 <% end %>
 
-<div class="list-group">
-  <%@requests.each do |request|%>
-  <div class="list-group-item">
-    <p><b> <%= request.sender_name %> requests <%=number_to_currency(request.amount) %></b></p>
-    <div style="position: absolute; top: 10px; right: 10px; width: 150px; text-align:right;">
-      <%= request.exact_date %>
+<div class="container" id="feed">
+  <div class="list-group">
+    <%@requests.each do |request|%>
+    <div class="list-group-item">
+      <p><b> <%= request.sender_name %> requests <%=number_to_currency(request.amount) %></b></p>
+      <div style="position: absolute; top: 10px; right: 10px; width: 150px; text-align:right;">
+        <%= request.exact_date %>
+      </div>
+      <p> <%= request.description %></p><br>
+      <div class= "actions" style="position: absolute; bottom: 5px; right: 100px;">
+        <%= form_for request, method: :delete do |f| %>
+          <%= f.submit "Decline", class: "btn btn-sm btn-default", onclick: "return confirm('Decline the request?');"  %>
+        <% end %>
+      </div>
+      <div class= "actions" style="position: absolute; bottom: 5px; right: 10px;">
+        <%= form_for request do |f| %>
+          <%= f.hidden_field :id %>
+          <%= f.submit "Pay", class: "btn btn-sm btn-primary" %>
+        <% end %>
+      </div>
     </div>
-    <p> <%= request.description %></p><br>
-    <div class= "actions" style="position: absolute; bottom: 5px; right: 100px;">
-      <%= form_for request, method: :delete do |f| %>
-        <%= f.submit "Decline", class: "btn btn-sm btn-default", onclick: "return confirm('Decline the request?');"  %>
-      <% end %>
-    </div>
-    <div class= "actions" style="position: absolute; bottom: 5px; right: 10px;">
-      <%= form_for request do |f| %>
-        <%= f.hidden_field :id %>
-        <%= f.submit "Pay", class: "btn btn-sm btn-primary" %>
-        <%# f.submit "Pay", formaction: approve_path, class: "btn btn-sm btn-primary" %>
-      <% end %>
-    </div>
-  </div>
-  <%end%>
-</div> <!--list-group -->
+    <%end%>
+  </div> <!--list-group -->
+</div>

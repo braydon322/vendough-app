@@ -14,12 +14,7 @@
  *= require_self
  */
 
-
- .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-     background-color: rgb(061,149,206) !important;
- }
-
- .page-header h2 {
+.page-header h2 {
    margin-top: 0;
    text-align: center;
    padding-top: 10px;
@@ -47,6 +42,72 @@
    background-color: rgb(061,149,206);
    margin-top: 0
  }
+
+ body > nav.navbar.navbar-default {
+   background-color: rgb(061,149,206);
+ }
+
+ #bs-example-navbar-collapse-1 > ul > li > a > span {
+   background-color: #cbd1db;
+   color: rgb(061,149,206);
+ }
+
+ #bs-example-navbar-collapse-1 > ul > li > a {
+   color: white;
+ }
+
+ #bs-example-navbar-collapse-1 > ul > li.active > a {
+   color: rgb(061,149,206);
+   background-color: white;
+ }
+
+ #bs-example-navbar-collapse-1 > ul > li.active {
+   background-color: white;
+ }
+
+/*pay or request button for other users*/
+ #feed > center > a {
+   background-color: rgb(061,149,206);
+   border-color: rgb(061,149,206);
+   width: 200px;
+   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
+ }
+
+ body > nav > div > div.navbar-header > a.navbar-brand.active {
+   color: white;
+ }
+
+ #feed > div > div > a {
+   background-color: rgb(061,149,206);
+   border-color: rgb(061,149,206);
+   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
+ }
+
+ #feed > div > div > button {
+   background-color: rgb(061,149,206);
+   border-color: rgb(061,149,206);
+   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
+ }
+
+/*.btn {
+  background-color: rgb(061,149,206);
+  border-color: rgb(061,149,206);
+}*/
+
+#feed > center > h5 > a {
+  border-color: gray;
+  color: gray;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
+}
+
+#new_user > div.actions > input {
+  background-color: rgb(061,149,206);
+  border-color: rgb(061,149,206);
+}
+
+body > nav > div > div.navbar-header > button > span {
+  color: white;
+}
 
  .form-signin {
    max-width: 330px;
@@ -81,10 +142,3 @@
    border-top-left-radius: 0;
    border-top-right-radius: 0;
  }
-
- /*.list-group-item-linkable:hover {
-    color: #555;
-    text-decoration: none;
-    background-color: #f5f5f5;
-    cursor: pointer;
-}*/

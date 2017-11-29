@@ -16,11 +16,28 @@ class Transaction < ApplicationRecord
     recipient.name
   end
 
+  def loser
+    if self.amount > 0
+      self.recipient
+    else
+      self.sender
+    end
+  end
+
+
   def loser_name
     if self.amount > 0
       self.recipient.name
     else
       self.sender.name
+    end
+  end
+
+  def gainer
+    if self.amount > 0
+      self.sender
+    else
+      self.recipient
     end
   end
 
@@ -47,7 +64,7 @@ class Transaction < ApplicationRecord
     self.amount *= -1
     #this way you can tell from reading the db who paid who.
     # i.e. if the amount is negative, the request sender, sent money.
-    # i.e. if the amount is positive, the request sender, is gaining money. 
+    # i.e. if the amount is positive, the request sender, is gaining money.
     sender.save
     recipient.save
   end

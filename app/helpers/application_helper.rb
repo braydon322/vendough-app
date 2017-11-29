@@ -19,9 +19,9 @@ module ApplicationHelper
 
   def format_with_color(transaction)
     if transaction.sender == current_user && transaction.amount > 0 || transaction.recipient == current_user && transaction.amount < 0
-      "color: green; position: absolute; bottom: 20px; right: 10px; width: 150px; text-align:right;"
+      "color: green; position: absolute; bottom: 48px; right: 15px; width: 150px; text-align:right;"
     else
-      "color: red; position: absolute; bottom: 20px; right: 10px; width: 150px; text-align:right;"
+      "color: red; position: absolute; bottom: 48px; right: 15px; width: 150px; text-align:right;"
     end
   end
 

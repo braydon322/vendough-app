@@ -27,6 +27,7 @@ class TransactionsController < ApplicationController
     @transaction = current_user.requests_for_money_from_others.find_by(id: params[:transaction][:id])
     @transaction.approve_transaction
     @transaction.save
+    flash[:message] = "You have successfully approved request from #{@transaction.recipient.name}."
     redirect_back(fallback_location: root_path)
   end
 
@@ -42,14 +43,9 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
-    ## if you're deleting a request for YOUR money...
-      @transaction = current_user.transactions.find_by(id: params[:id])
-      @transaction.destroy
-      flash[:message] = "Your request has been cancelled."
-      redirect_back(fallback_location: root_path)
-    ## but if you're deleting YOUR OWN request for someone's money...
-      ## do this
-    ## end
+    @transaction = Transaction.find(params[:id])
+    @transaction.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   private
