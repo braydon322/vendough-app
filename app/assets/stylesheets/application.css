@@ -14,6 +14,14 @@
  *= require_self
  */
 
+/*$ sign on transaction*/
+#basic-addon2 {
+
+}
+
+#dealing_amount {
+  /*padding-bottom: 2px;*/
+}
 .page-header h2 {
    margin-top: 0;
    text-align: center;
