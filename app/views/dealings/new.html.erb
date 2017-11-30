@@ -19,7 +19,7 @@
           <%= f.number_field :amount, step: 0.01, class: "form-control", placeholder: "0.00", required: true%>
         </div>
 
-        
+
 
         <div class="field" >
           <%= f.text_area :description, class: "form-control", placeholder: "What's it for?" %>
@@ -27,11 +27,11 @@
 
 
 
-        <div class="field" >
-          <%= f.fields_for :tags, @dealing.tags.build do |tags_fields| %>
-            <%= tags_fields.text_area :name, class: "form-control", placeholder: "#add #hashtags #here #like #this"  %>
-          <% end %>
-        </div>
+        <!-- <div class="field" >
+          <%#= f.fields_for :tags, @dealing.tags.build do |tags_fields| %>
+            <%#= tags_fields.text_area :name, class: "form-control", placeholder: "#add #hashtags #here #like #this"  %>
+          <%# end %>
+        </div> -->
 
 
 
