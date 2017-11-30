@@ -10,21 +10,20 @@
   <div class="list-group">
     <%@dealings.each do |dealing|%>
     <div class="list-group-item">
-      <p><b> Request to <%= dealing.recipient_name %></b></p>
-      <div style="position: absolute; top: 10px; right: 10px; width: 150px; text-align:right;">
-        <%= dealing.exact_date %>
-      </div>
-      <div style="position: absolute; bottom: 40px; right: 10px; width: 150px; text-align:right;">
-        <%= number_to_currency(dealing.amount) %>
-      </div>
-      <p> <%= dealing.description %></p><br>
-      <div class= "actions" style="position: absolute; bottom: 5px; right: 10px;">
-        <!-- <form action="/challenges/delete" method="post">
-          <input id="hidden" type="hidden" name="_method" value="delete">
-          <button style="display: inline;" type="submit" class="btn btn-sm btn-default" onclick="return confirm('Are you sure you want to delete this item?');">Cancel</button>
-        </form> -->
+      <b> Request to <%= link_to dealing.recipient.name, dealing.recipient %>: <%= number_to_currency(dealing.amount) %></b><br>
+      <small style="color: #a8a8a8"><%= dealing.exact_date %></small> <br>
+      <p> <%= dealing.description %></p>
+      <% if !dealing.tags.empty? %>
+        <small>
+          <% dealing.tags.each do |tag| %>
+            <%= link_to tag.name, "#" %>
+          <% end %>
+        </small>
+      <% end %>
+      <br>
+      <div class= "actions">
         <%= form_for dealing, method: :delete do |f| %>
-          <%= f.submit "Cancel", class: "btn btn-sm btn-default", onclick: "return confirm('Cancel the request?');"  %>
+          <%= f.submit "Cancel", class: "btn btn-sm btn-default btn-block", onclick: "return confirm('Cancel the request?');"  %>
         <% end %>
       </div>
     </div>

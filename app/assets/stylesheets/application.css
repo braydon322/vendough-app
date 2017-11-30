@@ -19,6 +19,17 @@
 
 }
 
+/* i.e. George Costanza requests $5.23 */
+#feed > div > div > b {
+  color: gray;
+}
+
+/* i.e. Requests box style*/
+#feed > div > div {
+  color: gray;
+  border-style: dashed;
+}
+
 /*request and pay "radio" button colors */
   #new_dealing > div > div > label {
     background-color: rgb(237,237,237);
@@ -34,7 +45,7 @@
 
   #new_dealing > div.action > input {
     background-color: rgb(061,149,206);
-    border-color: black;
+    border-color: rgb(203,203,203);
   }
 
   #new_dealing > div.action > input.hover {

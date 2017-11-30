@@ -36,4 +36,5 @@ module ApplicationHelper
   def current_user_involved?(dealing)
     dealing.sender == current_user || dealing.recipient == current_user
   end
+
 end

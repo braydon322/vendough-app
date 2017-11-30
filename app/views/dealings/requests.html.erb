@@ -9,11 +9,9 @@
   <div class="list-group">
     <%@requests.each do |request|%>
     <div class="list-group-item">
-      <p><b> <%= request.sender_name %> requests <%=number_to_currency(request.amount) %></b></p>
-      <div style="position: absolute; top: 10px; right: 10px; width: 150px; text-align:right;">
-        <%= request.exact_date %>
-      </div>
+      <b> <%= request.sender_name %> requests <%=number_to_currency(request.amount) %></b><br>
       <p> <%= request.description %></p><br>
+        <small>  <%= request.exact_date %> </small>
       <div class= "actions" style="position: absolute; bottom: 5px; right: 100px;">
         <%= form_for request, method: :delete do |f| %>
           <%= f.submit "Decline", class: "btn btn-sm btn-default", onclick: "return confirm('Decline the request?');"  %>
