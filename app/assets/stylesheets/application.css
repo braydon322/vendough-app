@@ -19,6 +19,29 @@
 
 }
 
+/*request and pay "radio" button colors */
+  #new_dealing > div > div > label {
+    background-color: gray;
+    border-color: black;
+  }
+
+  #new_dealing > div > div > label.active {
+    background-color: rgb(061,149,206);
+    border-color: black;
+  }
+
+  #new_dealing > div.action > input {
+    background-color: rgb(061,149,206);
+    border-color: black;
+  }
+
+  #new_dealing > div.action > input.hover {
+    background-color: blue;
+    border-color: blue;
+  }
+
+
+
 #dealing_amount {
   /*padding-bottom: 2px;*/
 }

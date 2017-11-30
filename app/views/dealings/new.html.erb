@@ -19,13 +19,13 @@
           <%= f.number_field :amount, step: 0.01, class: "form-control", placeholder: "0.00", required: true%>
         </div>
 
-        <br>
+        
 
         <div class="field" >
           <%= f.text_area :description, class: "form-control", placeholder: "What's it for?" %>
         </div>
 
-        <br>
+
 
         <div class="field" >
           <%= f.fields_for :tags, @dealing.tags.build do |tags_fields| %>
@@ -33,16 +33,23 @@
           <% end %>
         </div>
 
+
+
         <div class= "field">
-          <%= f.radio_button :action, 'request'%>
-          <%= label :action_request, 'Request' %>
-          <%= f.radio_button :action, 'pay' %>
-          <%= label :action_pay, 'Pay' %>
-          <%#= f.submit "Request", formaction: ask_path, class: "btn btn-md btn-primary" %>
+          <%= content_tag :div, class: "btn-group btn-group-justified", "data-toggle" => "buttons" do %>
+            <%= f.label :action_request, class: "btn btn-primary" do %>
+              <%= f.radio_button :action, 'request' %> Request
+            <% end %>
+            <%= f.label :action_request, class: "btn btn-primary" do %>
+              <%= f.radio_button :action, 'pay' %> Pay
+            <% end %>
+          <% end %>
         </div>
 
+
+
         <div class= "action">
-          <%= f.submit "Submit", class: "btn btn-md btn-primary" %>
+          <%= f.submit "Submit", class: "btn btn-md btn-primary btn-block" %>
         </div>
       <% end %>
   </center>
