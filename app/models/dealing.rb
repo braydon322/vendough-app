@@ -5,6 +5,14 @@ class Dealing < ApplicationRecord
   has_many :dealing_tags
   has_many :tags, through: :dealing_tags
 
+  def tags_attributes=(tag_attributes)
+    hashtags = tag_attributes.values.first.values.first.split(" ")
+    hashtags.each do |hashtag|
+      hashtag = Tag.find_or_create_by(name: hashtag)
+      self.tags << hashtag
+    end
+  end
+
   def self.newest_first
     where(status: "complete").order('id DESC')
   end
