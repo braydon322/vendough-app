@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/contacts', to: 'users#index', as: 'contacts'
   get '/add_fund', to: 'users#edit', as: 'add_fund'
 
+  resources :tags, only: [:index, :show]
+
   root 'dealings#index'
 
 end

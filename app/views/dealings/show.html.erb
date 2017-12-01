@@ -1,0 +1,17 @@
+<div class="container" id="show">
+  <div class="list-group-item" >
+      <b><%= link_to @dealing.sender_name, @dealing.sender %></b> <%= charged_or_paid(@dealing) %>  <b><%= link_to @dealing.recipient_name, @dealing.recipient%></b>
+      <br>
+      <small style="color: #a8a8a8">  <%= @dealing.exact_date %> </small>
+      <br>
+      <%= @dealing.description %>
+      <br>
+      <% if !@dealing.tags.empty? %>
+        <small style="color: #a8a8a8">
+          <% @dealing.tags.each do |tag| %>
+            <%= link_to tag.name, "#"%>
+            <% end %>
+        </small>
+      <% end %>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="container" id="hashtags">
+  <center>
+    <h4> #hashtags </h4>
+      <% if @tags.empty? %>
+        <p><b>Once vendoughers complete transactions with hashtags <br>
+        they will show up here</b></p>
+      <% end %>
+
+      <% @tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag) %>
+      <% end %>
+  </center>
+
+
+
+  <%#= content_tag :div, class: "list-group" do %>
+    <%#= render partial: 'dealing_details', collection: @dealings, as: :dealing%>
+  <%# end %>
+
+</div>

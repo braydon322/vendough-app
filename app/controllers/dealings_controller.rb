@@ -1,6 +1,4 @@
 class DealingsController < ApplicationController
-  before_action :signed_in?
-
   def index
     @dealings = Dealing.newest_first
   end
@@ -37,7 +35,7 @@ class DealingsController < ApplicationController
     @dealing = current_user.requests_for_money_from_others.find_by(id: params[:dealing][:id])
     @dealing.approve_dealing
     @dealing.save
-    flash[:message] = "You have successfully approved request from #{@dealing.recipient.name}."
+    flash[:message] = "You have successfully approved request from #{@dealing.sender.name}."
     redirect_back(fallback_location: root_path)
   end
 
@@ -50,19 +48,13 @@ class DealingsController < ApplicationController
   end
 
   def show
+    @dealing = Dealing.find(params[:id])
   end
 
   def destroy
     @dealing = Dealing.find(params[:id])
     @dealing.destroy
     redirect_back(fallback_location: root_path)
-  end
-
-  def signed_in?
-    if !user_signed_in?
-      flash[:error] = "Please sign in or sign up first."
-      redirect_to new_user_session_path
-    end
   end
 
   private

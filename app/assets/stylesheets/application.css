@@ -14,8 +14,12 @@
  *= require_self
  */
 
- .container, #feed, #request, #incomplete {
+ .container, #feed, #request, #incomplete, #show, #hashtags {
    max-width: 400px;
+ }
+
+ #hashtags > center > a {
+   
  }
 
  #trying {
