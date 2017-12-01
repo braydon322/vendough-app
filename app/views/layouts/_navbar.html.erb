@@ -22,6 +22,7 @@
           <li class="<%= active?(new_dealing_path) %>"><%= link_to "Pay/Request", new_dealing_path %></li>
           <li class="<%= active?(incomplete_path) %>"><a href="/dealings/incomplete">Incomplete <span class="badge badge-info"><%=incomplete_count%></span></a></li>
           <li class="<%= active?(pay_requests_path) %>"><a href="/dealings/requests">Requests <span class="badge badge-info"><%=requests_count%></span></a></li>
+          <li class="<%= active?(tags_path) %>"><%= link_to "#Hashtags", tags_path %></li>
         </ul>
         <!-- social bar nav links -->
         <ul class="nav navbar-nav navbar-right">
