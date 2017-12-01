@@ -9,7 +9,7 @@
       <% if !@dealing.tags.empty? %>
         <small style="color: #a8a8a8">
           <% @dealing.tags.each do |tag| %>
-            <%= link_to tag.name, "#"%>
+            <%= link_to tag.name, tag_path(tag)%>
             <% end %>
         </small>
       <% end %>

@@ -17,6 +17,17 @@ class Dealing < ApplicationRecord
     where(status: "complete").order('id DESC')
   end
 
+  def self.all_with_tags_completed(tag)
+    joins(:tags).where(:dealings => {status: "complete"}, :tags => {id: tag.id}).order(id: 'DESC')
+    # SELECT dealings.* FROM dealings
+    # INNER JOIN dealing_tags
+    # ON dealings.id = dealing_tags.dealing_id
+    # INNER JOIN tags
+    # ON dealing_tags.tag_id = tags.id
+    # WHERE dealings.status = "complete" AND tags.name = "#pepsi"
+    # ORDER BY dealings.id DESC
+  end
+
   def sender_name
     sender.name
   end
