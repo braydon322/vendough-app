@@ -29,6 +29,17 @@
   border-style: dashed;
 }
 
+/*decline request button*/
+#edit_dealing_13 > input.btn.btn-sm.btn-default {
+  width: 169px;
+}
+
+/*pay request button*/
+#edit_dealing_13 > input.btn.btn-sm.btn-primary {
+  width: 169px;
+  position: absolute; bottom: 10px; left: 187px;
+}
+
 /*request and pay "radio" button colors */
   #new_dealing > div > div > label {
     background-color: rgb(237,237,237);
