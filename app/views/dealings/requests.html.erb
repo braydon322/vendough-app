@@ -9,7 +9,7 @@
   <div class="list-group">
     <%@requests.each do |request|%>
     <div class="list-group-item" >
-      <b> <%= request.sender_name %> requests <%=number_to_currency(request.amount) %></b><br>
+      <b> <%= link_to request.sender_name, request.sender %> requests <%=number_to_currency(request.amount) %></b><br>
       <small style="color: #a8a8a8">  <%= request.exact_date %> </small><br>
       <%= request.description %> <br>
       <% if !request.tags.empty? %>
@@ -21,11 +21,11 @@
       <% end %>
       <div class= "actions">
         <%= form_for request, method: :delete do |f| %>
-          <%= f.submit "Decline", class: "btn btn-sm btn-default", onclick: "return confirm('Decline the request?');"  %>
+          <%= f.submit "Decline", class: "btn btn-sm btn-default", onclick: "return confirm('Decline request?');"  %>
         <% end %>
         <%= form_for request do |f| %>
           <%= f.hidden_field :id %>
-          <%= f.submit "Pay", class: "btn btn-sm btn-primary" %>
+          <%= f.submit "Pay", class: "btn btn-sm btn-primary", onclick: "return confirm('Approve request?');" %>
         <% end %>
 
       </div>

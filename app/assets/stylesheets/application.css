@@ -18,6 +18,11 @@
    max-width: 400px;
  }
 
+ #trying {
+   max-width: 150px;
+ }
+
+
 /* i.e. George Costanza requests $5.23 */
 #incomplete> div > div > b {
   color: gray;
@@ -30,12 +35,18 @@
 }
 
 /*decline request button*/
-#edit_dealing_13 > input.btn.btn-sm.btn-default {
+.edit_dealing > input.btn.btn-sm.btn-default {
   width: 169px;
 }
 
-/*pay request button*/
-#edit_dealing_13 > input.btn.btn-sm.btn-primary {
+/*#edit_dealing_17 > input.btn.btn-sm.btn-default*/
+
+.edit_dealing > input.btn.btn-sm.btn-default.btn-block {
+  width: 338px;
+}
+
+/*pay button in requests tab */
+.edit_dealing > input.btn.btn-sm.btn-primary {
   width: 169px;
   position: absolute; bottom: 10px; left: 187px;
 }

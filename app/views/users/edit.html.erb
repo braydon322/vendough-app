@@ -1,1 +1,22 @@
-editing user's fund here.
+<div class="container" id="add_fund">
+  <center>
+    <% if flash[:message] %>
+      <p style="color:red;"> <%= flash[:message] %> </p>
+    <% end %>
+    <h4><%=@user.name%></h4>
+    <h5><%= "#{number_to_currency(display_credit)} in Vendough" %></h5>
+    <h5> Input amount to transfer from your fictitious bank account.</h5>
+    <div id="trying">
+      <%= form_for @user do |f| %>
+        <div class="input-group" >
+          <span class="input-group-addon" id="basic-addon2">$</span>
+          <%= f.number_field :credit, step: 0.01, class: "form-control", value: "0.00"%>
+        </div>
+
+        <div class= "action">
+          <%= f.submit "Add Fund", class: "btn btn-md btn-primary btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </center>
+</div>

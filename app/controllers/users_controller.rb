@@ -11,7 +11,17 @@ class UsersController < ApplicationController
   end
 
   def update
-
+    @user = current_user
+    self_fund = user_params[:credit].to_f
+    if self_fund > 0
+      @user.credit += self_fund
+      @user.save
+      flash[:message] = "Successfully transferred from your fictitious account."
+      redirect_to user_path(@user)
+    else
+      flash[:message] = "Please add an amount > $0"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def show
@@ -33,6 +43,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-
+    params.require(:user).permit(:credit)
   end
 end

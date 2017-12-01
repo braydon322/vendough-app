@@ -1,8 +1,9 @@
-<% if flash[:message] %>
-  <p style="color:green;"> <%= flash[:message] %> </p>
-<% end %>
+
 <div class="container" id="feed">
   <center>
+    <% if flash[:message] %>
+      <p style="color:green;"> <%= flash[:message] %> </p>
+    <% end %>
     <h4><%= @user.name %></h4>
     <% if own_page? %>
       <h5>
