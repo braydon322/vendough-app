@@ -22,6 +22,8 @@
    max-width: 150px;
  }
 
+ #edit_user_1 > div.action > input
+
 
 /* i.e. George Costanza requests $5.23 */
 #incomplete> div > div > b {
@@ -74,9 +76,6 @@
     border-color: blue;
   }
 
-#dealing_amount {
-  /*padding-bottom: 2px;*/
-}
 .page-header h2 {
    margin-top: 0;
    text-align: center;

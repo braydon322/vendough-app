@@ -13,9 +13,9 @@
       <small style="color: #a8a8a8">  <%= request.exact_date %> </small><br>
       <%= request.description %> <br>
       <% if !request.tags.empty? %>
-        <small>
+        <small style="color: #a8a8a8">
           <% request.tags.each do |tag| %>
-            <%= link_to tag.name, "#" %>
+            <%= tag.name%>
           <% end %>
         </small>
       <% end %>
@@ -27,7 +27,6 @@
           <%= f.hidden_field :id %>
           <%= f.submit "Pay", class: "btn btn-sm btn-primary", onclick: "return confirm('Approve request?');" %>
         <% end %>
-
       </div>
 
     </div>

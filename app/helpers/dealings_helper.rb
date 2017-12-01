@@ -18,4 +18,8 @@ module DealingsHelper
   def current_user_involved?(dealing)
     dealing.sender == current_user || dealing.recipient == current_user
   end
+
+  def charged_or_paid(dealing)
+    dealing.action == "request" ? "charged" : "paid"
+  end
 end

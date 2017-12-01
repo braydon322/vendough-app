@@ -1,5 +1,7 @@
 <div class="list-group-item">
-  <p><b><%= link_to dealing.loser_name, dealing.loser %></b> paid <b><%= link_to dealing.gainer_name, dealing.gainer%></b></p>
+
+  <%# if dealing.action == "request" %>
+    <p><b><%= link_to dealing.sender_name, dealing.sender %></b> <%= charged_or_paid(dealing) %>  <b><%= link_to dealing.recipient_name, dealing.recipient%></b></p>
   <div style="position: absolute; top: 10px; right: 15px; width: 90px; text-align:right;">
     <%= dealing.concise_date %> <span class="glyphicon glyphicon-globe"></span>
   </div>
