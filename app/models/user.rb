@@ -18,7 +18,7 @@ class User < ApplicationRecord
   end
 
   def self.contacts(current_user)
-    where.not("id = ?", current_user.id)
+    where.not("id = ?", current_user.id).order(:name)
   end
 
   def requests_awaiting_approval_by_others

@@ -9,7 +9,7 @@
         <div class="field" >
           <%= f.hidden_field :sender_id, :value => current_user.id %>
           <%= f.label :recipient_id, "Select Contact" %> <br>
-          <%= f.collection_select :recipient_id, User.contacts(current_user), :id, :name %>
+          <%= f.collection_select :recipient_id, User.contacts(current_user), :id, :name, :selected => @preselected_user, :include_blank => true  %>
         </div>
 
         <br>

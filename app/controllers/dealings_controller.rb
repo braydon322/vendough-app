@@ -5,6 +5,9 @@ class DealingsController < ApplicationController
 
   def new
     @dealing = Dealing.new
+    if params[:user_id]
+      @preselected_user = params[:user_id]
+    end
   end
 
   def create

@@ -6,6 +6,14 @@ class UsersController < ApplicationController
     @contacts = User.contacts(current_user)
   end
 
+  def edit #they type 3000/add_fund
+    @user = current_user
+  end
+
+  def update
+
+  end
+
   def show
     @user = User.find_by(id: params[:id])
     @dealings = Dealing.where("status = ? AND (sender_id = ? OR recipient_id = ?)", "complete",  @user.id, @user.id).order(updated_at: :desc)
@@ -20,5 +28,11 @@ class UsersController < ApplicationController
 
   def own_page?
     current_user.id == @user.id
+  end
+
+  private
+
+  def user_params
+
   end
 end

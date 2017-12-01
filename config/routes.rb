@@ -4,15 +4,14 @@ Rails.application.routes.draw do
   # ^^ must be above dealing resource otherwise thinks it's a show
   resources :dealings
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", :omniauth_callbacks => "users/omniauth_callbacks"}
-  # resources :users, only: [:show]
 
-  resources :users, only: [:show] do
+
+  resources :users, only: [:show, :update] do
     resources :dealings
-    get '/add_fund', to: 'users#add_fund', as: 'self_fund'
   end
 
-
   get '/contacts', to: 'users#index', as: 'contacts'
+  get '/add_fund', to: 'users#edit', as: 'add_fund'
 
   root 'welcome#home'
 
