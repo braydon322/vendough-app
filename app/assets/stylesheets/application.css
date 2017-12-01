@@ -14,18 +14,17 @@
  *= require_self
  */
 
-/*$ sign on transaction*/
-#basic-addon2 {
-
-}
+ .container, #feed, #request, #incomplete {
+   max-width: 400px;
+ }
 
 /* i.e. George Costanza requests $5.23 */
-#feed > div > div > b {
+#incomplete> div > div > b {
   color: gray;
 }
 
 /* i.e. Requests box style*/
-#feed > div > div {
+#incomplete > div > div {
   color: gray;
   border-style: dashed;
 }
@@ -64,12 +63,14 @@
    font-family: 'Anton', sans-serif;
  }
 
+/*navbar logo*/
+ body > nav > div > div.navbar-header > a {
+   font-family: 'Anton', sans-serif;
+   font-style:italic
+ }
+
 #main, .center {
   width: 100%;
-}
-
-.container, #feed {
-  max-width: 400px;
 }
 
 .container, #test2 {
@@ -121,10 +122,11 @@
    color: white;
  }
 
+/*View Dealing button/link*/
  #feed > div > div > a {
-   background-color: rgb(061,149,206);
+   /*background-color: rgb(061,149,206);
    border-color: rgb(061,149,206);
-   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
+   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);*/
  }
 
  #feed > div > div > button {

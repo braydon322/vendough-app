@@ -5,10 +5,10 @@
   </div>
 <% end %>
 
-<div class="container" id="feed">
+<div class="container" id="request">
   <div class="list-group">
     <%@requests.each do |request|%>
-    <div class="list-group-item">
+    <div class="list-group-item" >
       <b> <%= request.sender_name %> requests <%=number_to_currency(request.amount) %></b><br>
       <p> <%= request.description %></p><br>
         <small>  <%= request.exact_date %> </small>
