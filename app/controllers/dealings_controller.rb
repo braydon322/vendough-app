@@ -1,4 +1,5 @@
 class DealingsController < ApplicationController
+  before_action :signed_in?
   def index
     @dealings = Dealing.newest_first
   end
@@ -57,6 +58,12 @@ class DealingsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def signed_in?
+    if !user_signed_in?
+      flash[:error] = "Please sign in or sign up first."
+      redirect_to new_user_session_path
+    end
+  end
   private
 
   def dealing_params

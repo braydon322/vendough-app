@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   helper_method :own_page?
+  before_action :signed_in?
 
   def index
     @contacts = User.contacts(current_user)
@@ -30,6 +31,13 @@ class UsersController < ApplicationController
 
   def own_page?
     current_user.id == @user.id
+  end
+
+  def signed_in?
+    if !user_signed_in?
+      flash[:error] = "Please sign in or sign up first."
+      redirect_to new_user_session_path
+    end
   end
 
   private
