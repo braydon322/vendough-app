@@ -1,8 +1,10 @@
-
-
 <div class="container">
+  <%- flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <%- end -%>
   <h2>Log in</h2>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-signin") do |f| %>
+
   <div class="field">
     <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email", required: true %>
   </div>

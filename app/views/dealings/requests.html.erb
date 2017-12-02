@@ -1,9 +1,17 @@
+<% if flash[:message] %>
+<div style="text-align: center" >
+    <p> <%= flash[:message] %> </p>
+</div>
+<% end %>
+
 <% if current_user.requests_for_money_from_others.empty? %>
   <div style="text-align: center" >
     <h4>Requests to you</h4>
     <h5>Accept/decline requests for money from others here.</h5>
   </div>
 <% end %>
+
+
 
 <div class="container" id="request">
   <div class="list-group">

@@ -14,6 +14,10 @@
  *= require_self
  */
 
+#error_explanation > ul {
+  list-style-type: none;
+}
+
  .container, #feed, #request, #incomplete, #show, #hashtags {
    max-width: 400px;
  }
@@ -24,6 +28,11 @@
   background-color: red;
   display: table;
 }*/
+
+/*remove bullets on errors.*/
+#new > center > li {
+  list-style-type: none;
+}
 
  #hashtags > center > a {
 
@@ -109,7 +118,7 @@
   width: 100%;
 }
 
-.container, #test2 {
+.container, #new {
   max-width: 300px;
 }
 

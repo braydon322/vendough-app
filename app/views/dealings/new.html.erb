@@ -1,12 +1,21 @@
-<div class="container" id="test2">
+
+<div class="container" id="new">
+<% if @dealing.errors.any? %>
+  <% @dealing.errors.full_messages.each do |msg| %>
+    <% msg_arr = msg.split(" ") %>
+    <% msg_arr[0] = "#{msg_arr[0]}:"%>
+    <li style="color: red"><%= msg_arr.join(" ") %></li>
+  <% end %>
+<% end %>
+
+<% if flash[:message] %>
+  <p style="color:red;"> <%= flash[:message] %> </p>
+<% end %>
+
   <center>
-    <% if flash[:message] %>
-      <p style="color:red;"> <%= flash[:message] %> </p>
-    <% end %>
     <h4>Pay or Request</h4>
-      <%= form_for @dealing do |f| %>
+      <%= form_for @dealing, url: create_dealing_path, method: :post do |f| %>
         <div class="field" >
-          <%#= f.hidden_field :sender_id, :value => current_user.id %>
           <%= f.label :recipient_id, "Select Contact" %> <br>
           <%= f.collection_select :recipient_id, User.contacts(current_user), :id, :name, :selected => @preselected_user, :include_blank => true  %>
         </div>

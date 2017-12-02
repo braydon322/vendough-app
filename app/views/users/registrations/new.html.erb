@@ -1,6 +1,9 @@
 <div class="container" id="test2">
+  <%#- flash.each do |name, msg| -%>
+    <%#= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <%#- end -%>
   <h2>Sign up</h2>
-  <h3>and get a $25 credit for limited time only.</h3>
+  <h4>and get a $25 credit</h4>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-signin") do |f| %>
 
     <%= devise_error_messages! %>

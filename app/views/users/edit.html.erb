@@ -4,7 +4,7 @@
       <p style="color:red;"> <%= flash[:message] %> </p>
     <% end %>
     <h4><%=@user.name%></h4>
-    <h5><%= "#{number_to_currency(display_credit)} in Vendough" %></h5>
+    <h5><%= "#{display_credit} in Vendough" %></h5>
     <h5> Input amount to transfer from your fictitious bank account.</h5>
     <div id="trying">
       <%= form_for @user do |f| %>

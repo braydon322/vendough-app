@@ -14,26 +14,26 @@ class DealingsController < ApplicationController
   def create
     @dealing = Dealing.new(dealing_params)
     @dealing.sender = current_user
-    binding.pry
-    if @dealing.valid?
+    if @dealing.valid? #recipient chosen, positive amount chosen, concise desc, payment chosen.
       if @dealing.action == "request"
         @dealing.status = "incomplete"
         @dealing.save
         flash[:message] = "Your request to #{@dealing.recipient.name} has been sent."
-        redirect_to root_path
+        redirect_to user_path(current_user)
       elsif @dealing.action == "pay"
         @dealing.pay_dealing
         if @dealing.sender.save
           @dealing.recipient.save
           @dealing.save
           flash[:message] = "You have successfully sent money to #{@dealing.recipient.name}."
-          redirect_to root_path
+          redirect_to user_path(current_user)
         else
           flash[:message] = @dealing.sender.errors[:credit].first
           render :new
         end
       end
     else
+      # redirect_to new_dealing_path
       render :new
     end
   end
@@ -41,8 +41,13 @@ class DealingsController < ApplicationController
   def update #i.e. approving dealing
     @dealing = current_user.requests_for_money_from_others.find_by(id: params[:dealing][:id])
     @dealing.approve_dealing
-    @dealing.save
-    flash[:message] = "You have successfully approved request from #{@dealing.sender.name}."
+    if @dealing.recipient.save
+      @dealing.sender.save
+      @dealing.save
+      flash[:message] = "You have successfully approved the request from #{@dealing.sender.name}."
+    else
+      flash[:message] = "Insufficient funds to approve transaction."
+    end
     redirect_back(fallback_location: root_path)
   end
 
@@ -66,7 +71,6 @@ class DealingsController < ApplicationController
 
   def signed_in?
     if !user_signed_in?
-      flash[:error] = "Please sign in or sign up first."
       redirect_to new_user_session_path
     end
   end

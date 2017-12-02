@@ -6,11 +6,12 @@ class Dealing < ApplicationRecord
   has_many :tags, through: :dealing_tags, dependent: :destroy
   validates :recipient, presence: true
   validates :amount, presence: true
-  validates_numericality_of :amount, :greater_than => 0, :message => "Please enter an amount greater than 0."
+  validates_numericality_of :amount, :greater_than => 0, :message => "entered <= $0"
+  validates_numericality_of :amount, :less_than_or_equal_to => 2000, :message => "entered >= $2000"
   validates :description, presence: true
-  validates :description, length: { maximum: 35, :message => "Please keep the description to 35 characters." }
+  validates :description, length: { maximum: 35, :message => "must be < than 35 char" }
   validates :action, presence: true
-  validates :action, inclusion: { in: %w(pay request), message: "radio button values have been tampered with."}
+  validates :action, inclusion: { in: %w(pay request), message: "request/pay tampered"}
 
   def tags_attributes=(tag_attributes)
     unless tag_attributes.values.first.values.first.empty?
@@ -63,8 +64,6 @@ class Dealing < ApplicationRecord
     sender.credit += amount
     recipient.credit -= amount
     self.status = "complete"
-    sender.save
-    recipient.save
   end
 
 end
