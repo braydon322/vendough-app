@@ -4,12 +4,21 @@ class Dealing < ApplicationRecord
   belongs_to :recipient, :class_name => "User"
   has_many :dealing_tags, dependent: :destroy
   has_many :tags, through: :dealing_tags, dependent: :destroy
+  validates :recipient, presence: true
+  validates :amount, presence: true
+  validates_numericality_of :amount, :greater_than => 0, :message => "Please enter an amount greater than 0."
+  validates :description, presence: true
+  validates :description, length: { maximum: 35, :message => "Please keep the description to 35 characters." }
+  validates :action, presence: true
+  validates :action, inclusion: { in: %w(pay request), message: "radio button values have been tampered with."}
 
   def tags_attributes=(tag_attributes)
-    hashtags = tag_attributes.values.first.values.first.split(" ")
-    hashtags.each do |hashtag|
-      hashtag = Tag.find_or_create_by(name: hashtag)
-      self.tags << hashtag
+    unless tag_attributes.values.first.values.first.empty?
+      hashtags = tag_attributes.values.first.values.first.split(" ")
+      hashtags.each do |hashtag|
+        hashtag = Tag.find_or_create_by(name: hashtag)
+        self.tags << hashtag
+      end
     end
   end
 

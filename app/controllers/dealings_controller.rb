@@ -14,22 +14,27 @@ class DealingsController < ApplicationController
   def create
     @dealing = Dealing.new(dealing_params)
     @dealing.sender = current_user
-    if @dealing.action == "request"
-      @dealing.status = "incomplete"
-      @dealing.save
-      flash[:message] = "Your request to #{@dealing.recipient.name} has been sent."
-      redirect_to root_path
-    elsif @dealing.action == "pay"
-      @dealing.pay_dealing
-      if @dealing.sender.save
-        @dealing.recipient.save
+    binding.pry
+    if @dealing.valid?
+      if @dealing.action == "request"
+        @dealing.status = "incomplete"
         @dealing.save
-        flash[:message] = "You have successfully sent money to #{@dealing.recipient.name}."
+        flash[:message] = "Your request to #{@dealing.recipient.name} has been sent."
         redirect_to root_path
-      else
-        flash[:message] = @dealing.sender.errors[:credit].first
-        render :new
+      elsif @dealing.action == "pay"
+        @dealing.pay_dealing
+        if @dealing.sender.save
+          @dealing.recipient.save
+          @dealing.save
+          flash[:message] = "You have successfully sent money to #{@dealing.recipient.name}."
+          redirect_to root_path
+        else
+          flash[:message] = @dealing.sender.errors[:credit].first
+          render :new
+        end
       end
+    else
+      render :new
     end
   end
 
