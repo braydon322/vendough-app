@@ -2,8 +2,8 @@ class Dealing < ApplicationRecord
   alias_attribute :user, :sender
   belongs_to :sender, :class_name => "User"
   belongs_to :recipient, :class_name => "User"
-  has_many :dealing_tags
-  has_many :tags, through: :dealing_tags
+  has_many :dealing_tags, dependent: :destroy
+  has_many :tags, through: :dealing_tags, dependent: :destroy
 
   def tags_attributes=(tag_attributes)
     hashtags = tag_attributes.values.first.values.first.split(" ")

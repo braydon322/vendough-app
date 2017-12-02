@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
-  has_many :dealing_tags
-  has_many :dealings, through: :dealing_tags
+  has_many :dealing_tags, dependent: :destroy
+  has_many :dealings, through: :dealing_tags, dependent: :destroy
 
   def self.completed_by_name
     joins(:dealings).where(:dealings => {status: "complete"}).group(:id).order(:name)

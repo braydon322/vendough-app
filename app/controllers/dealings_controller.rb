@@ -13,6 +13,7 @@ class DealingsController < ApplicationController
 
   def create
     @dealing = Dealing.new(dealing_params)
+    @dealing.sender = current_user
     if @dealing.action == "request"
       @dealing.status = "incomplete"
       @dealing.save
@@ -27,7 +28,7 @@ class DealingsController < ApplicationController
         redirect_to root_path
       else
         flash[:message] = @dealing.sender.errors[:credit].first
-        redirect_back(fallback_location: root_path)
+        render :new
       end
     end
   end
@@ -67,7 +68,7 @@ class DealingsController < ApplicationController
   private
 
   def dealing_params
-    params.require(:dealing).permit(:sender_id, :recipient_id, :amount, :description, :action, :tags_attributes => [:name])
+    params.require(:dealing).permit(:recipient_id, :amount, :description, :action, :tags_attributes => [:name])
   end
 
 end
