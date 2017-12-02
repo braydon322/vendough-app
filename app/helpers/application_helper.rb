@@ -1,8 +1,5 @@
 module ApplicationHelper
-  # def credit_logic
-  #   if current_user.credit
-  #   sprintf("%.2f", number_to_currency(current_user.credit))
-  # end
+
   def display_credit
     number_to_currency(User.find(current_user.id).credit)
   end

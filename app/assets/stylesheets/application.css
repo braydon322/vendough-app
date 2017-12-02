@@ -22,28 +22,14 @@
    max-width: 400px;
  }
 
-
-/*.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}*/
-
 /*remove bullets on errors.*/
 #new > center > li {
   list-style-type: none;
 }
 
- #hashtags > center > a {
-
- }
-
- #trying {
+#trying {
    max-width: 150px;
  }
-
- #edit_user_1 > div.action > input
-
 
 /* i.e. George Costanza requests $5.23 */
 #incomplete> div > div > b {
@@ -60,8 +46,6 @@
 .edit_dealing > input.btn.btn-sm.btn-default {
   width: 169px;
 }
-
-/*#edit_dealing_17 > input.btn.btn-sm.btn-default*/
 
 .edit_dealing > input.btn.btn-sm.btn-default.btn-block {
   width: 338px;
@@ -108,10 +92,6 @@
  body > nav > div > div.navbar-header > a {
    font-family: 'Anton', sans-serif;
    font-style:italic
- }
-
- #feed > center > h5 > a.hover {
-
  }
 
 #main, .center {
@@ -167,23 +147,11 @@
    color: white;
  }
 
-/*View Dealing button/link*/
- #feed > div > div > a {
-   /*background-color: rgb(061,149,206);
-   border-color: rgb(061,149,206);
-   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);*/
- }
-
  #feed > div > div > button {
    background-color: rgb(061,149,206);
    border-color: rgb(061,149,206);
    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
  }
-
-/*.btn {
-  background-color: rgb(061,149,206);
-  border-color: rgb(061,149,206);
-}*/
 
 #feed > center > h5 > a {
   border-color: gray;

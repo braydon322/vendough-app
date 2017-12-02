@@ -1,5 +1,6 @@
 class DealingsController < ApplicationController
   before_action :signed_in?
+
   def index
     @dealings = Dealing.newest_first
   end
@@ -33,7 +34,6 @@ class DealingsController < ApplicationController
         end
       end
     else
-      # redirect_to new_dealing_path
       render :new
     end
   end
