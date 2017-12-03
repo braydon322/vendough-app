@@ -2,6 +2,9 @@
 
 Specs:
 - [x] Using Ruby on Rails for the project
+
+      Ruby on Rails is used to create Vendough.
+
 - [x] Include at least one has_many relationship (x has_many y e.g. User has_many Recipes)
 
       User has many dealings(transactions).
@@ -54,6 +57,8 @@ Specs:
         Dealing.newest_first
           queries all completed transactions and sorts them by update date.
 
+        Dealing.user_dealings(user)
+          queries all completed transactions where a selected user is involved
 
 - [x] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
 
@@ -64,18 +69,34 @@ Specs:
 - [x] Include logout (how e.g. Devise)
 - [x] Include third party signup/login (how e.g. Devise/OmniAuth)
 
-      Devise has been incorporated to handle login/signin logic. Users can also access their account by logging into through Facebook.
+      Devise has been incorporated to handle login/signin logic. Users can also access their account by logging in through Facebook.
 
 
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
 
-      When a user clicks on the "Pay or Request" on another user's show page, it takes them to a nested route of /users/:id/dealings/new with the contact already pre-selected.
+      Clicking on a contact takes a user to users/:id/transactions.
 
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+
+      When a user clicks on the "Pay or Request" on another user's show page, it takes them to a nested route of /users/:id/dealings/new with the contact already pre-selected.
+
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
+
+      Pay or Request page displays validation errors and wraps fields with errors with a div of fields_with_errors class.
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY
+
+        It's DRYest to my best abilities.
+
+- [x] Limited logic in controllers
+
+        Aside from the rather contrived logic in the Dealing controller's create method -- due to its validation heavy nature --  many logic has been outsourced to the respective models.
+
+- [x] Views use helper methods if appropriate
+
+        I have helper methods that color a transaction green or red based on what is going on in the transaction, another method that prepends transactions with +/- signs, and another method that displays number of incomplete requests in the navbar just to name a few.
+
+- [x] Views use partials if appropriate
+
+        The dealing_details.html.erb is frequently referred to show a list of transactions, a list of user-specific transactions, a tag specific transactions, and etc.

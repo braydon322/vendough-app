@@ -11,8 +11,6 @@ Rails.application.routes.draw do
     resources :dealings, only: [:index, :new]
   end
 
-  # get '/users/:id/:dealings', to: 'users#show', as: 'user_dealings'
-
   get '/contacts', to: 'users#index', as: 'contacts'
   get '/add_fund', to: 'users#edit', as: 'add_fund'
 
