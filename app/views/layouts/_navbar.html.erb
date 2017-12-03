@@ -17,7 +17,7 @@
         <!-- main nav links -->
         <ul class="nav navbar-nav">
           <!-- <li class="active"><%#= link_to "Feed", root_path %></li> -->
-          <li class="<%= active?(user_path(current_user)) %>"><%= link_to "#{current_user.name} #{display_credit}", user_path(current_user) %></li>
+          <li class="<%= active?(user_dealings_path(current_user)) %>"><%= link_to "#{current_user.name} #{display_credit}", user_dealings_path(current_user) %></li>
           <li class="<%= active?(contacts_path) %>"><%= link_to "Contacts", contacts_path %></li>
           <li class="<%= active?(new_dealing_path) %>"><%= link_to "Pay/Request", new_dealing_path %></li>
           <li class="<%= active?(incomplete_path) %>"><a href="/dealings/incomplete">Incomplete <span class="badge badge-info"><%=incomplete_count%></span></a></li>
