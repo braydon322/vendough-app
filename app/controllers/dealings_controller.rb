@@ -23,17 +23,17 @@ class DealingsController < ApplicationController
         redirect_to user_path(current_user)
       elsif @dealing.action == "pay"
         @dealing.pay_dealing
-        if @dealing.sender.save
+        if @dealing.sender.save #the sender has enough funds
           @dealing.recipient.save
           @dealing.save
           flash[:message] = "You have successfully sent money to #{@dealing.recipient.name}."
           redirect_to user_path(current_user)
-        else
+        else #the sender does not have enough funds
           flash[:message] = @dealing.sender.errors[:credit].first
           render :new
         end
       end
-    else
+    else #the transaction is invalid
       render :new
     end
   end
