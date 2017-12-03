@@ -15,7 +15,7 @@
         they will show up here</b></p>
       <% end %>
     <% else %>
-      <a href="/users/<%=params[:id]%>/dealings/new" type="button" class="btn btn-primary btn-sm btn-block">Pay or Request</a>
+      <a href="/users/<%=@user.id%>/dealings/new" type="button" class="btn btn-primary btn-sm btn-block">Pay or Request</a>
       <br>
       <% if @dealings.empty? %>
         <br>

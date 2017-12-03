@@ -24,7 +24,7 @@ class User < ApplicationRecord
     # FROM "dealings"
     # WHERE "dealings"."sender_id" = self.id
     # AND "dealings"."status" = "incomplete"
-    dealings.where(status: "incomplete")
+    dealings.where(status: "incomplete").order(id: "DESC")
   end
 
   def requests_for_money_from_others
@@ -32,6 +32,6 @@ class User < ApplicationRecord
     # FROM "dealings"
     # WHERE "dealings"."recipient_id" = self.id
     # AND "dealings"."status" = "incomplete"
-    inverse_dealings.where(status: "incomplete")
+    inverse_dealings.where(status: "incomplete").order(id: "DESC")
   end
 end

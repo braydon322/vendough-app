@@ -26,7 +26,7 @@ Specs:
 
 - [x] The "through" part of the has_many through includes at least one user submittable attribute (attribute_name e.g. ingredients.quantity)
 
-      A dealing (which bridges a user to another user in a transaction) is created by a user where the user specifies the amount, the recipient, the description of the transaction, and whehter the user is paying/requesting payment from another user.
+      A dealing (which bridges a user to another user in a transaction) is created by a user where the user specifies the amount, the recipient, the description of the transaction, and whether the user is paying/requesting an amount from another user.
 
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
 
