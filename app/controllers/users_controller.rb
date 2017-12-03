@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def update
+  def update #taking amount the user self-added in the /add_fund path
     @user = current_user
     self_fund = user_params[:credit].to_f
     if self_fund > 0
