@@ -24,11 +24,11 @@ class Dealing < ApplicationRecord
   end
 
   def self.newest_first
-    where(status: "complete").order('id DESC')
+    where(status: "complete").order(updated_at: 'DESC')
   end
 
   def self.all_with_tags_completed(tag)
-    joins(:tags).where(:dealings => {status: "complete"}, :tags => {id: tag.id}).order(id: 'DESC')
+    joins(:tags).where(:dealings => {status: "complete"}, :tags => {id: tag.id}).order(updated_at: 'DESC')
     # SELECT dealings.* FROM dealings
     # INNER JOIN dealing_tags
     # ON dealings.id = dealing_tags.dealing_id
@@ -36,6 +36,10 @@ class Dealing < ApplicationRecord
     # ON dealing_tags.tag_id = tags.id
     # WHERE dealings.status = "complete" AND tags.name = "#pepsi"
     # ORDER BY dealings.id DESC
+  end
+
+  def self.user_dealings(user)
+    where("status = ? AND (sender_id = ? OR recipient_id = ?)", "complete",  user.id, user.id).order(updated_at: :desc)
   end
 
   def sender_name

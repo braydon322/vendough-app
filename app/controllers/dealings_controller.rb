@@ -1,8 +1,16 @@
 class DealingsController < ApplicationController
   before_action :signed_in?
+  helper_method :own_page?
+
 
   def index
-    @dealings = Dealing.newest_first
+    if params[:user_id]
+      @user = User.find_by(id: params[:user_id])
+      @dealings = Dealing.user_dealings(@user)
+      render '/users/show'
+    else
+      @dealings = Dealing.newest_first
+    end
   end
 
   def new
@@ -73,6 +81,10 @@ class DealingsController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_session_path
     end
+  end
+
+  def own_page?
+    current_user.id == @user.id
   end
   private
 

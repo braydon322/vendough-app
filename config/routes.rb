@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", :omniauth_callbacks => "users/omniauth_callbacks"}
 
   resources :users, only: [:show, :update] do
-    resources :dealings, only: [:new]
+    resources :dealings, only: [:index, :new]
   end
+
+  # get '/users/:id/:dealings', to: 'users#show', as: 'user_dealings'
 
   get '/contacts', to: 'users#index', as: 'contacts'
   get '/add_fund', to: 'users#edit', as: 'add_fund'

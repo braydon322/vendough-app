@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @dealings = Dealing.where("status = ? AND (sender_id = ? OR recipient_id = ?)", "complete",  @user.id, @user.id).order(updated_at: :desc)
+    @dealings = Dealing.user_dealings(@user)
   end
 
   def own_page?
