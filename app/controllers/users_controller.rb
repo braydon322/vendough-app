@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       @user.credit += self_fund
       @user.save
       flash[:message] = "Successfully transferred from your fictitious account."
-      redirect_to user_path(@user)
+      redirect_to user_dealings_path(@user)
     else
       flash[:message] = "Please add an amount > $0"
       redirect_back(fallback_location: root_path)
@@ -45,4 +45,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:credit)
   end
+  
 end

@@ -11,5 +11,6 @@
   <% end %>
   <p> <%= dealing.description %></p>
 
-  <a href="/dealings/<%=dealing.id%>" type="button" class="btn btn-sm btn-default btn-block">View Details</a>
+  <%= content_tag :a, "View Details", href: "/dealings/#{dealing.id}", type: "button", class: "btn btn-sm btn-default btn-block"  %>
+
 </div>
