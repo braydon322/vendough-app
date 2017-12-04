@@ -1,24 +1,9 @@
-# README
+# Vendough
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Clone into local repository.
 
-Things you may want to cover:
+Run rake db:migrate in terminal.
 
-* Ruby version
+Run rails s in terminal.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Go to a local host, and start Vendoughing away. 
