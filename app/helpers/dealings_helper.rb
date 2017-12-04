@@ -19,6 +19,10 @@ module DealingsHelper
     "position: absolute; top: 10px; right: 15px; width: 90px; text-align:right;"
   end
 
+  def long_rectangular_block
+    "btn btn-sm btn-default btn-block"
+  end
+
   def current_user_involved?(dealing)
     dealing.sender == current_user || dealing.recipient == current_user
   end

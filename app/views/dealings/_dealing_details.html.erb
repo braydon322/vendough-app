@@ -1,4 +1,4 @@
-<div class="list-group-item">
+<%= content_tag :div, class: "list-group-item" do %>
 
   <p><b><%= link_to dealing.sender_name, user_dealings_path(dealing.sender) %></b> <%= charged_or_paid(dealing) %>  <b><%= link_to dealing.recipient_name, user_dealings_path(dealing.recipient)%></b></p>
 
@@ -11,9 +11,9 @@
       <b><%= plus_or_minus(dealing) %><%= number_to_currency(dealing.amount) %></b>
     <% end %>
   <% end %>
-  
+
   <p> <%= dealing.description %></p>
 
-  <%= content_tag :a, "View Details", href: "/dealings/#{dealing.id}", type: "button", class: "btn btn-sm btn-default btn-block"  %>
+  <%= content_tag :a, "View Details", href: "/dealings/#{dealing.id}", type: "button", class: long_rectangular_block  %>
 
-</div>
+<% end %>
