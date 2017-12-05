@@ -8,6 +8,10 @@ module DealingsHelper
     end
   end
 
+  def bottom_line(dealing)
+    "#{plus_or_minus(dealing)}#{number_to_currency(dealing.amount)}"
+  end
+
 
   def format_with_color(dealing)
     if dealing.sender == current_user && dealing.action == "request" || dealing.recipient == current_user && dealing.action == "pay"

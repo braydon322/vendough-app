@@ -7,9 +7,9 @@
   <% end %>
 
   <%= cost_involved(dealing) do %>
-    <b><%= plus_or_minus(dealing) %><%= number_to_currency(dealing.amount) %></b>
+    <b><%= bottom_line(dealing) %></b>
   <% end %>
-  
+
   <p> <%= dealing.description %></p>
 
   <%= content_tag :a, "View Details", href: "/dealings/#{dealing.id}", type: "button", class: long_rectangular_block  %>
