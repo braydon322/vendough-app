@@ -1,4 +1,14 @@
 module DealingsHelper
+
+  def cost_involved(dealing)
+    if current_user_involved?(dealing)
+      content_tag :div, style: format_with_color(dealing) do
+        yield
+      end
+    end
+  end
+
+
   def format_with_color(dealing)
     if dealing.sender == current_user && dealing.action == "request" || dealing.recipient == current_user && dealing.action == "pay"
       "color: green; position: absolute; bottom: 48px; right: 15px; width: 150px; text-align:right;"
@@ -30,4 +40,5 @@ module DealingsHelper
   def charged_or_paid(dealing)
     dealing.action == "request" ? "charged" : "paid"
   end
+
 end

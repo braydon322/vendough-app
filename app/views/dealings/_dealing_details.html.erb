@@ -6,12 +6,10 @@
     <%= dealing.concise_date %> <span class="glyphicon glyphicon-globe"></span>
   <% end %>
 
-  <% if current_user_involved?(dealing) %>
-    <%= content_tag :div, style: format_with_color(dealing) do  %>
-      <b><%= plus_or_minus(dealing) %><%= number_to_currency(dealing.amount) %></b>
-    <% end %>
+  <%= cost_involved(dealing) do %>
+    <b><%= plus_or_minus(dealing) %><%= number_to_currency(dealing.amount) %></b>
   <% end %>
-
+  
   <p> <%= dealing.description %></p>
 
   <%= content_tag :a, "View Details", href: "/dealings/#{dealing.id}", type: "button", class: long_rectangular_block  %>

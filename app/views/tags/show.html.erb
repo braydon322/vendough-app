@@ -2,7 +2,9 @@
   <center>
     <h4> <%= @tag.name %> </h4>
   </center>
+
   <%= content_tag :div, class: "list-group" do %>
     <%= render partial: '/dealings/dealing_details', collection: @dealings, as: :dealing%>
   <% end %>
+  
 </div>
