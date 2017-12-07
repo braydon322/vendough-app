@@ -12,14 +12,8 @@
         <b> Request to <%= link_to dealing.recipient.name, dealing.recipient %>: <%= number_to_currency(dealing.amount) %></b><br>
         <small style="color: #a8a8a8"><%= dealing.exact_date %></small> <br>
         <%= dealing.description %>
-        <% if !dealing.tags.empty? %>
-          <br>
-          <small>
-            <% dealing.tags.each do |tag| %>
-              <%= tag.name%>
-            <% end %>
-          </small>
-        <% end %>
+        <br>
+        <%= display_pending_tags(dealing.tags)%>
         <br>
         <div class= "actions">
           <%= form_for dealing, method: :delete do |f| %>

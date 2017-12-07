@@ -44,10 +44,18 @@ module DealingsHelper
     dealing.action == "request" ? "charged" : "paid"
   end
 
-  def display_tags(tags)
+  def display_pending_tags(tags)
     if !tags.empty?
       content_tag :small, style: "color: #a8a8a8" do
-        render partial: 'tag', collection: tags, as: :tag
+        render partial: 'dealings/pending_tag', collection: tags, as: :tag
+      end
+    end
+  end
+
+  def display_link_tags(tags)
+    if !tags.empty?
+      content_tag :small, style: "color: #a8a8a8" do
+        render partial: '/dealings/link_tag', collection: tags, as: :tag
       end
     end
   end
