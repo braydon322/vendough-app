@@ -44,4 +44,27 @@ module DealingsHelper
     dealing.action == "request" ? "charged" : "paid"
   end
 
+  def display_tags(tags)
+    if tags.empty?
+      content_tag :small, style: "color: #a8a8a8" do
+        yield
+      end
+    end
+  end
+
+  ## wanted this helper to work, but couldn't pull it off.
+  # def display_dealing_errors(dealing)
+  #  if dealing.errors.any?
+  #    dealing.errors.full_messages.map do |msg|
+  #      #msg = "Recipient must exist"
+  #      msg_arr = msg.split(" ") # [Recipient, must, exist]
+  #      msg_arr[0] = "#{msg_arr[0]}:" # [Recipient:, must, exist]
+  #      content_tag :li, style: "color: red" do
+  #        msg_arr.join(" ")
+  #      end
+  #    end
+  #  end
+  # end
+
+
 end

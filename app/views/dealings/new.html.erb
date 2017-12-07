@@ -1,62 +1,59 @@
 
 <div class="container" id="new">
-<% if @dealing.errors.any? %>
-  <% @dealing.errors.full_messages.each do |msg| %>
-    <% msg_arr = msg.split(" ") %>
-    <% msg_arr[0] = "#{msg_arr[0]}:"%>
-    <li style="color: red"><%= msg_arr.join(" ") %></li>
-  <% end %>
-<% end %>
-
-<% if flash[:message] %>
-  <p style="color:red;"> <%= flash[:message] %> </p>
-<% end %>
-
-  <center>
-    <h4>Pay or Request</h4>
-      <%= form_for @dealing, url: create_dealing_path, method: :post do |f| %>
-        <div class="field" >
-          <%= f.label :recipient_id, "Select Contact" %> <br>
-          <%= f.collection_select :recipient_id, User.contacts(current_user), :id, :name, :selected => @preselected_user, :include_blank => true  %>
-        </div>
-
-        <br>
-
-        <div class="input-group" >
-          <span class="input-group-addon" id="basic-addon2">$</span>
-          <%= f.number_field :amount, step: 0.01, class: "form-control", placeholder: "0.00"%>
-        </div>
-
-
-
-        <div class="field" >
-          <%= f.text_area :description, class: "form-control", placeholder: "What's it for?" %>
-        </div>
-
-        <div class="field" >
-          <%= f.fields_for :tags, @dealing.tags.build do |tags_fields| %>
-            <%= tags_fields.text_area :name, class: "form-control", placeholder: "#add #hashtags #here #like #this"  %>
-          <% end %>
-        </div>
-
-
-
-        <div class= "field">
-          <%= content_tag :div, class: "btn-group btn-group-justified", "data-toggle" => "buttons" do %>
-            <%= f.label :action_request, class: "btn btn-primary" do %>
-              <%= f.radio_button :action, 'request' %> Request
-            <% end %>
-            <%= f.label :action_request, class: "btn btn-primary" do %>
-              <%= f.radio_button :action, 'pay' %> Pay
-            <% end %>
-          <% end %>
-        </div>
-
-
-
-        <div class= "action">
-          <%= f.submit "Submit", class: "btn btn-md btn-primary btn-block" %>
-        </div>
+  <!-- <%#= display_dealing_errors(@dealing)  %> couldn't pull it off -->
+  <% if @dealing.errors.any? %>
+    <% @dealing.errors.full_messages.each do |msg| %>
+      <% msg_arr = msg.split(" ") %>
+      <% msg_arr[0] = "#{msg_arr[0]}:"%>
+      <%= content_tag :li, style:"color: red" do %>
+        <%= msg_arr.join(" ") %>
       <% end %>
-  </center>
+    <% end %>
+  <% end %>
+
+  <% if flash[:message] %>
+    <p style="color:red;"> <%= flash[:message] %> </p>
+  <% end %>
+
+    <center>
+      <h4>Pay or Request</h4>
+        <%= form_for @dealing, url: create_dealing_path, method: :post do |f| %>
+          <div class="field" >
+            <%= f.label :recipient_id, "Select Contact" %> <br>
+            <%= f.collection_select :recipient_id, User.contacts(current_user), :id, :name, :selected => @preselected_user, :include_blank => true  %>
+          </div>
+
+          <br>
+
+          <div class="input-group" >
+            <span class="input-group-addon" id="basic-addon2">$</span>
+            <%= f.number_field :amount, step: 0.01, class: "form-control", placeholder: "0.00"%>
+          </div>
+
+          <div class="field" >
+            <%= f.text_area :description, class: "form-control", placeholder: "What's it for?" %>
+          </div>
+
+          <div class="field" >
+            <%= f.fields_for :tags, @dealing.tags.build do |tags_fields| %>
+              <%= tags_fields.text_area :name, class: "form-control", placeholder: "#add #hashtags #here #like #this"  %>
+            <% end %>
+          </div>
+
+          <div class= "field">
+            <%= content_tag :div, class: "btn-group btn-group-justified", "data-toggle" => "buttons" do %>
+              <%= f.label :action_request, class: "btn btn-primary" do %>
+                <%= f.radio_button :action, 'request' %> Request
+              <% end %>
+              <%= f.label :action_request, class: "btn btn-primary" do %>
+                <%= f.radio_button :action, 'pay' %> Pay
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class= "action">
+            <%= f.submit "Submit", class: "btn btn-md btn-primary btn-block" %>
+          </div>
+        <% end %>
+    </center>
 </div>

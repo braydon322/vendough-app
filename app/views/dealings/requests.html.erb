@@ -16,9 +16,7 @@
       <%= request.description %> <br>
       <% if !request.tags.empty? %>
         <small style="color: #a8a8a8">
-          <% request.tags.each do |tag| %>
-            <%= tag.name%>
-          <% end %>
+          <%= render partial: 'tag', collection: request.tags, as: :tag %>
         </small>
       <% end %>
       <div class= "actions">
