@@ -6,9 +6,7 @@
     <%= dealing.concise_date %> <span class="glyphicon glyphicon-globe"></span>
   <% end %>
 
-  <%= cost_involved(dealing) do %>
-    <b><%= bottom_line(dealing) %></b>
-  <% end %>
+  <b><%= cost_involved(dealing) %></b>
 
   <p> <%= dealing.description %></p>
 

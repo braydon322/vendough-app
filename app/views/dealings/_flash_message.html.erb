@@ -1,0 +1,5 @@
+<% if flash[:message] %>
+  <%= content_tag :div, style: "text-align: center" do %>
+    <p> <%= flash[:message] %> </p>
+  <% end %>
+<% end %>
