@@ -45,7 +45,7 @@ module DealingsHelper
   end
 
   def display_tags(tags)
-    if tags.empty?
+    if !tags.empty?
       content_tag :small, style: "color: #a8a8a8" do
         yield
       end

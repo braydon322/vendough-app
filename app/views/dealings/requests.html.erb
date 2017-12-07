@@ -14,10 +14,8 @@
       <b> <%= link_to request.sender_name, request.sender %> requests <%=number_to_currency(request.amount) %></b><br>
       <small style="color: #a8a8a8">  <%= request.exact_date %> </small><br>
       <%= request.description %> <br>
-      <% if !request.tags.empty? %>
-        <small style="color: #a8a8a8">
+      <%= display_tags(request.tags) do %>
           <%= render partial: 'tag', collection: request.tags, as: :tag %>
-        </small>
       <% end %>
       <div class= "actions">
         <%= form_for request, method: :delete do |f| %>
